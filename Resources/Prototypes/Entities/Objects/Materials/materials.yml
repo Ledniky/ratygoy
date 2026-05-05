@@ -445,6 +445,8 @@
           Quantity: 20
         - ReagentId: Titanium
           Quantity: 10
+        - ReagentId: Phoron
+          Quantity: .2
         canReact: false
   - type: Material
   - type: PhysicalComposition
