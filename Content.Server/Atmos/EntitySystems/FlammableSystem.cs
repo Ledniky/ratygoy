@@ -32,6 +32,7 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Server.Containers;
 
 namespace Content.Server.Atmos.EntitySystems
 {
@@ -53,6 +54,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly AudioSystem _audio = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
+        [Dependency] private readonly ContainerSystem _container = default!;
 
         private EntityQuery<InventoryComponent> _inventoryQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -471,9 +473,13 @@ namespace Content.Server.Atmos.EntitySystems
                     continue;
                 }
 
-                _alertsSystem.ShowAlert(uid, flammable.FireAlert);
+                bool fireproof = false;
+                if (HasComp<FireproofComponent>(uid) || InFireproofContainer(uid))
+                    fireproof = true;
 
-                if (flammable.FireStacks > 0)
+                if (!fireproof) _alertsSystem.ShowAlert(uid, flammable.FireAlert);
+
+                if (flammable.FireStacks > 0 && !fireproof)
                 {
                     var air = _atmosphereSystem.GetContainingMixture(uid);
 
@@ -506,6 +512,23 @@ namespace Content.Server.Atmos.EntitySystems
                     Extinguish(uid, flammable);
                 }
             }
+        }
+
+        public bool InFireproofContainer(EntityUid uid)
+        {
+            var id = uid;
+            int iterationCount = 0;
+            while (iterationCount < 30) // Protects against turtles all the way down
+            {
+                if (!_container.TryGetContainingContainer(id, out var container))
+                    return false;
+
+                id = container.Owner;
+                if (TryComp<FireproofComponent>(id, out var fireproof) && fireproof.ProtectContents)
+                    return true;
+            }
+
+            return false;
         }
     }
 }
