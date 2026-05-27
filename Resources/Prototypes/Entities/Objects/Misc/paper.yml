@@ -75,6 +75,9 @@
     - state: paper_stamp-generic
       map: ["enum.PaperVisualLayers.Stamp"]
       visible: false
+    - state: signature
+      map: ["enum.PaperVisualLayers.Signature"]
+      visible: false
   - type: Paper
   - type: PaperLabelType
   - type: ActivatableUI
