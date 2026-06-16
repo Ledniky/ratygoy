@@ -12,14 +12,14 @@ public sealed partial class RandomTableAllSelector : RandomTableSelector
     public List<RandomTableSelector> Children = new();
 
     /// <inheritdoc/>
-    protected override IEnumerable<RandomTableValue> RunImplementation(RandomTableContext ctx)
+    protected override IEnumerable<RandomTableValueDefinition> RunImplementation(RandomTableContext ctx)
     {
         foreach (var child in Children)
             foreach (var item in child.Run(ctx))
                 yield return item;
     }
 
-    public override IEnumerable<(RandomTableValue value, float prob)> List(RandomTableContext ctx, float probabilityMultipler = 1f)
+    public override IEnumerable<(RandomTableValueDefinition value, float prob)> List(RandomTableContext ctx, float probabilityMultipler = 1f)
     {
         foreach (var child in Children)
             foreach (var (value, prob) in child.List(ctx, probabilityMultipler))

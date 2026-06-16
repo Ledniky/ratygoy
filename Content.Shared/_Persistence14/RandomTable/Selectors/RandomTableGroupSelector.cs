@@ -12,9 +12,9 @@ public sealed partial class RandomTableGroupSelector : RandomTableSelector
     public List<RandomTableSelector> Children = new();
 
     /// <inheritdoc/>
-    protected override IEnumerable<RandomTableValue> RunImplementation(RandomTableContext ctx)
+    protected override IEnumerable<RandomTableValueDefinition> RunImplementation(RandomTableContext ctx)
     {
-        var totalWeight = SumWeights(ctx, out var activeChildren);
+        var totalWeight = SumWeights(ctx, out var activeChildren, useConditions: true);
         if (totalWeight <= 0f) // If there are no valid children do nothing.
             yield break;
 
@@ -35,9 +35,10 @@ public sealed partial class RandomTableGroupSelector : RandomTableSelector
     }
 
     /// <inheritdoc/>
-    public override IEnumerable<(RandomTableValue value, float prob)> List(RandomTableContext ctx, float probabilityMultipler = 1f)
+    public override IEnumerable<(RandomTableValueDefinition value, float prob)> List(RandomTableContext ctx, float probabilityMultipler = 1f)
     {
-        var totalWeight = SumWeights(ctx, out var activeChildren, useConditions: true);
+        var totalWeight = SumWeights(ctx, out var activeChildren, useConditions: false);
+        if (totalWeight <= 0) totalWeight = 1; // Literally just idiot proofing this...
 
         foreach (var child in activeChildren)
         {
@@ -53,10 +54,18 @@ public sealed partial class RandomTableGroupSelector : RandomTableSelector
     private float SumWeights(RandomTableContext ctx, out List<RandomTableSelector> activeChildren, bool useConditions = false)
     {
         activeChildren = new();
+
+        if (Children is null) return 0f;
         float sum = 0f;
+
+
         foreach (var child in Children)
         {
-            if (child.CheckConditions(ctx) || !useConditions) // Ignore inactive children.
+            if (child is null)
+                continue;
+            var valid = child.CheckConditions(ctx) || !useConditions;
+
+            if (!useConditions || child.CheckConditions(ctx)) // Ignore inactive children.
             {
                 sum += child.Weight;
                 activeChildren.Add(child);

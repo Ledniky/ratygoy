@@ -8,7 +8,7 @@ public sealed partial class RandomTableNestedSelector : RandomTableSelector
     [DataField(required: true)]
     public ProtoId<RandomTablePrototype> TableId = default!;
 
-    protected override IEnumerable<RandomTableValue> RunImplementation(RandomTableContext ctx)
+    protected override IEnumerable<RandomTableValueDefinition> RunImplementation(RandomTableContext ctx)
     {
         var table = ctx.PrototypeManager.Index(TableId).Table;
 
@@ -16,7 +16,7 @@ public sealed partial class RandomTableNestedSelector : RandomTableSelector
             yield return item;
     }
 
-    public override IEnumerable<(RandomTableValue value, float prob)> List(RandomTableContext ctx, float probabilityMultipler = 1f)
+    public override IEnumerable<(RandomTableValueDefinition value, float prob)> List(RandomTableContext ctx, float probabilityMultipler = 1f)
     {
         var table = ctx.PrototypeManager.Index(TableId).Table;
 

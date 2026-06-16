@@ -36,7 +36,7 @@ public abstract partial class RandomTableSelector
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public IEnumerable<RandomTableValue> Run(RandomTableContext ctx)
+    public IEnumerable<RandomTableValueDefinition> Run(RandomTableContext ctx)
     {
         if (!CheckConditions(ctx))
             yield break;
@@ -55,12 +55,12 @@ public abstract partial class RandomTableSelector
     /// <summary>
     /// Child specific implementation of the Run command. Returns all accepted and valid members of the selector.
     /// </summary>
-    protected abstract IEnumerable<RandomTableValue> RunImplementation(RandomTableContext ctx);
+    protected abstract IEnumerable<RandomTableValueDefinition> RunImplementation(RandomTableContext ctx);
 
     /// <summary>
     /// Provides a simple list of all items in the table ignoring rolls and conditions.
     /// </summary>
-    public abstract IEnumerable<(RandomTableValue value, float prob)> List(RandomTableContext ctx, float probabilityMultiplier = 1f);
+    public abstract IEnumerable<(RandomTableValueDefinition value, float prob)> List(RandomTableContext ctx, float probabilityMultiplier = 1f);
 
     public bool CheckConditions(RandomTableContext ctx)
     {

@@ -1,3 +1,4 @@
+using Content.Shared._Persistence14.RandomTable.ValueDefinition;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;

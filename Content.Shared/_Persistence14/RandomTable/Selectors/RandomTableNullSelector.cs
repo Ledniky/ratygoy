@@ -8,12 +8,12 @@ namespace Content.Shared._Persistence14.RandomTable.Selectors;
 /// </summary>
 public sealed partial class RandomTableNullSelector : RandomTableSelector
 {
-    protected override IEnumerable<RandomTableValue> RunImplementation(RandomTableContext ctx)
+    protected override IEnumerable<RandomTableValueDefinition> RunImplementation(RandomTableContext ctx)
     {
         yield break;
     }
 
-    public override IEnumerable<(RandomTableValue, float)> List(RandomTableContext ctx, float probabilityMultipler) 
+    public override IEnumerable<(RandomTableValueDefinition, float)> List(RandomTableContext ctx, float probabilityMultipler) 
     {
         yield break;
     }

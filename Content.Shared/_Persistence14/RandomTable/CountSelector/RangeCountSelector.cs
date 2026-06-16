@@ -1,3 +1,4 @@
+using Content.Shared._Persistence14.RandomTable.ValueDefinition;
 using Robust.Shared.Random;
 
 namespace Content.Shared._Persistence14.RandomTable.Count;
@@ -43,8 +44,8 @@ public sealed partial class RangeCountSelector : CountSelector
         if (Range < 1) return 0f;
         if (Range == 1)
         {
-            var singleValue = Min; // I promise this math checks out.
-            return threshold == singleValue ? 1f : 0f;
+            var singleValue = Min;
+            return threshold <= singleValue ? 1f : 0f;
         }
         if (threshold < Min) return 1f; // Smaller than the minimum, definitely true.
         if (threshold > Max) return 0f; // Bigger than the maximum, definitely false.

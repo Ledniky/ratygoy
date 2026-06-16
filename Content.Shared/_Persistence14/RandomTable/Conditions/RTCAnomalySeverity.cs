@@ -12,7 +12,7 @@ public sealed partial class RTCAnomalySeverity : RandomTableCondition
 
     protected override bool EvaluateImplementation(RandomTableSelector selector, RandomTableContext ctx)
     {
-        if (ctx.EnsureContext(State.RandomTableContextElement.Source) || !ctx.EntityManager.TryGetComponent<AnomalyComponent>(ctx.State?.Source, out var anomaly))
+        if (!ctx.EnsureContext(State.RandomTableContextElement.Source) || !ctx.EntityManager.TryGetComponent<AnomalyComponent>(ctx.State?.Source, out var anomaly))
             return false; // If it doesn't have an anomaly component... it shouldn't evaluate true.
 
         return anomaly.Severity >= MinSeverityThreshold && anomaly.Severity <= MaxSeverityThreshold;

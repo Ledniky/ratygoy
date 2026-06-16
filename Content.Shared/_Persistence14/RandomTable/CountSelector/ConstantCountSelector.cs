@@ -1,4 +1,4 @@
-using Robust.Shared.Random;
+using Content.Shared._Persistence14.RandomTable.ValueDefinition;
 
 namespace Content.Shared._Persistence14.RandomTable.Count;
 
@@ -18,4 +18,5 @@ public sealed partial class ConstantCountSelector : CountSelector
     {
         Value = value;
     }
+    public ConstantCountSelector() { }
 }

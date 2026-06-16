@@ -20,14 +20,26 @@ public sealed partial class RandomTableSystem : EntitySystem
     /// <summary>
     /// Runs the random table, fetching all rolled and valid items from the table in the provided prototype.
     /// </summary>
-    public IEnumerable<RandomTableValue> Run(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) => Run(_protoMan.Index(tableProtoId).Table, ctx, state);
-
-    public IEnumerable<RandomTableValue> Run(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
+    public IEnumerable<RandomTableValueDefinition> Run(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) => Run(_protoMan.Index(tableProtoId).Table, ctx, state);
+    /// <summary>
+    /// Runs the random table, fetching all rolled and valid items from the table in the provided prototype.
+    /// </summary>
+    public IEnumerable<RandomTableValueDefinition> Run(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
     {
         ctx ??= AssembleContext(state);
 
         foreach (var item in table.Run(ctx))
             yield return item;
+    }
+
+    public IEnumerable<T> Run<T>(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) => Run<T>(_protoMan.Index(tableProtoId).Table, ctx, state);
+    public IEnumerable<T> Run<T>(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
+    {
+        ctx ??= AssembleContext(state);
+
+        foreach (var item in table.Run(ctx))
+            if (item.TryGet<T>(ctx, out var value))
+                yield return value;
     }
 
     /// <summary>
@@ -40,9 +52,11 @@ public sealed partial class RandomTableSystem : EntitySystem
     /// </summary>
     public IEnumerable<int> RunInt(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
     {
-        foreach (var item in Run(table, ctx, state))
-            if (item.TryGetInt(out var val))
-                yield return val.Value;
+        ctx ??= AssembleContext(state);
+
+        foreach (var item in table.Run(ctx))
+            if (item.TryGet<int>(ctx, out var value))
+                yield return value;
     }
 
     /// <summary>
@@ -55,9 +69,11 @@ public sealed partial class RandomTableSystem : EntitySystem
     /// </summary>
     public IEnumerable<float> RunFloat(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
     {
-        foreach (var item in Run(table, ctx, state))
-            if (item.TryGetFloat(out var val))
-                yield return val.Value;
+        ctx ??= AssembleContext(state);
+
+        foreach (var item in table.Run(ctx))
+            if (item.TryGet<float>(ctx, out var value))
+                yield return value;
     }
 
     /// <summary>
@@ -70,9 +86,11 @@ public sealed partial class RandomTableSystem : EntitySystem
     /// </summary>
     public IEnumerable<string> RunString(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
     {
-        foreach (var item in Run(table, ctx, state))
-            if (item.TryGetString(out var val))
-                yield return val;
+        ctx ??= AssembleContext(state);
+
+        foreach (var item in table.Run(ctx))
+            if (item.TryGet<string>(ctx, out var value))
+                yield return value;
     }
 
     /// <summary>
@@ -85,15 +103,17 @@ public sealed partial class RandomTableSystem : EntitySystem
     /// </summary>
     public IEnumerable<T> RunPrototype<T>(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) where T : class, IPrototype
     {
-        foreach (var item in Run(table, ctx, state))
-            if (item.TryGetPrototype<T>(_protoMan, out var proto))
-                yield return proto;
+        ctx ??= AssembleContext(state);
+
+        foreach (var item in table.Run(ctx))
+            if (item.TryGet<T>(ctx, out var value))
+                yield return value;
     }
     # endregion
 
     # region List
-    public IEnumerable<(RandomTableValue value, float prob)> List(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) => List(_protoMan.Index(tableProtoId).Table, ctx, state);
-    public IEnumerable<(RandomTableValue value, float prob)> List(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
+    public IEnumerable<(RandomTableValueDefinition value, float prob)> List(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) => List(_protoMan.Index(tableProtoId).Table, ctx, state);
+    public IEnumerable<(RandomTableValueDefinition value, float prob)> List(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
     {
         ctx ??= AssembleContext(state);
         foreach (var (value, prob) in table.List(ctx))
@@ -103,33 +123,37 @@ public sealed partial class RandomTableSystem : EntitySystem
     public IEnumerable<(int value, float prob)> ListInt(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) => ListInt(_protoMan.Index(tableProtoId).Table, ctx, state);
     public IEnumerable<(int value, float prob)> ListInt(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
     {
-        foreach (var (value, prob) in List(table, ctx, state))
-            if (value.TryGetInt(out var val))
-                yield return (val.Value, prob);
+        ctx ??= AssembleContext(state);
+        foreach (var (item, prob) in table.List(ctx))
+            if (item.TryGet<int>(ctx, out var value))
+                yield return (value, prob);
     }
 
     public IEnumerable<(float value, float prob)> ListFloat(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) => ListFloat(_protoMan.Index(tableProtoId).Table, ctx, state);
     public IEnumerable<(float value, float prob)> ListFloat(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
     {
-        foreach (var (value, prob) in List(table, ctx, state))
-            if (value.TryGetFloat(out var val))
-                yield return (val.Value, prob);
+        ctx ??= AssembleContext(state);
+        foreach (var (item, prob) in table.List(ctx))
+            if (item.TryGet<float>(ctx, out var value))
+                yield return (value, prob);
     }
 
     public IEnumerable<(string value, float prob)> ListString(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) => ListString(_protoMan.Index(tableProtoId).Table, ctx, state);
     public IEnumerable<(string value, float prob)> ListString(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null)
     {
-        foreach (var (value, prob) in List(table, ctx, state))
-            if (value.TryGetString(out var val))
-                yield return (val, prob);
+        ctx ??= AssembleContext(state);
+        foreach (var (item, prob) in table.List(ctx))
+            if (item.TryGet<string>(ctx, out var value))
+                yield return (value, prob);
     }
 
     public IEnumerable<(T prototype, float prob)> ListPrototype<T>(ProtoId<RandomTablePrototype> tableProtoId, RandomTableContext ctx, RandomTableStateComponent? state = null) where T : class, IPrototype => ListPrototype<T>(_protoMan.Index(tableProtoId).Table, ctx, state);
     public IEnumerable<(T prototype, float prob)> ListPrototype<T>(RandomTableSelector table, RandomTableContext? ctx = null, RandomTableStateComponent? state = null) where T : class, IPrototype
     {
-        foreach (var (value, prob) in List(table, ctx, state))
-            if (value.TryGetPrototype<T>(_protoMan, out var proto))
-                yield return (proto, prob);
+        ctx ??= AssembleContext(state);
+        foreach (var (item, prob) in table.List(ctx))
+            if (item.TryGet<T>(ctx, out var value))
+                yield return (value, prob);
 
     }
     #endregion
@@ -153,7 +177,7 @@ public sealed partial class RandomTableSystem : EntitySystem
     /// <summary>
     /// Creates the necessary context for executing a run or list of the table selector.
     /// </summary>
-    private RandomTableContext AssembleContext(RandomTableStateComponent? state = null)
+    public RandomTableContext AssembleContext(RandomTableStateComponent? state = null)
     {
         var ctx = new RandomTableContext()
         {

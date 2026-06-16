@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Persistence14.RandomTable.ValueDefinition;
 using Robust.Shared.Random;
 
 namespace Content.Shared._Persistence14.RandomTable.Count;
@@ -6,11 +7,11 @@ namespace Content.Shared._Persistence14.RandomTable.Count;
 public sealed partial class TableCountSelector : CountSelector
 {
     [DataField]
-    public RandomTableSelector Table = (RandomTableValue)1;
+    public RandomTableSelector Table = (RandomTableIntValueDefinition)1;
 
     public override int Get(RandomTableContext ctx)
     {
-        foreach (var item in ctx.RandomTableSystem.RunInt(Table))
+        foreach (var item in ctx.RandomTableSystem.RunInt(Table, ctx))
             return item;
         return 0;
     }
