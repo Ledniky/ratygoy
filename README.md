@@ -1,24 +1,76 @@
 <div class="header" align="center">  
-<img alt="Space Station 14" width="880" height="300" src="https://raw.githubusercontent.com/space-wizards/asset-dump/de329a7898bb716b9d5ba9a0cd07f38e61f1ed05/github-logo.svg">  
+<img alt="Space Station 14" width="880" height="300" src="https://github.com/user-attachments/assets/d84d8fd3-a7e5-432f-8335-5b77819d91c8">  
 </div>
 
-Space Station 14 Persistence is a fork of Space Station 14.
+<div align="center">
 
-## Links
+# 🐀 Hakumai
 
-<div class="header" align="center">  
+**Форк Space Station 14 с уникальными механиками и контентом**
 
-[Discord](https://discord.ss14.io/) 
+[![Discord](https://img.shields.io/discord/1280958916691361842?style=for-the-badge&logo=discord&logoColor=white&label=Discord&color=%237289da)](https://discord.gg/f7ZCyH4Qf8)
+[![GitHub License](https://img.shields.io/github/license/odleer/ratgore?style=for-the-badge)](./LEGAL.md)
+[![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?&style=for-the-badge)](https://dotnet.microsoft.com/)
 
 </div>
 
+---
+
+## 📋 О проекте
+
+**Ratgore** — это форк [Space Station 14](https://github.com/space-wizards/space-station-14), космического симулятора на движке Robust Toolbox. Проект добавляет уникальные механики, контент и улучшения геймплея с фокусом на атмосферу и уникальный игровой опыт.
+
+## 🚀 Быстрый старт
+
+### Требования
+
+- **Git** — [скачать](https://git-scm.com/downloads)
+- **.NET SDK 10.0 или выше** — [скачать](https://dotnet.microsoft.com/download/dotnet/10.0)
+
+### 🍃 Windows
+
+```
+# 1. Клонируйте репозиторий
+git clone https://github.com/ss14-art/hakumai.git
+cd ratgore
+
+# 2. Загрузите движок
+git submodule update --init --recursive
+
+# 3. Соберите проект
+Scripts\bat\buildAllRelease.bat
+
+# 4. Запустите клиент и сервер
+Scripts\bat\runQuickAll.bat
+```
+
+**Готово!** Подключитесь к **localhost** в клиенте и играйте
+
+### 🐧 Linux / macOS
+
+```
+# 1. Клонируйте репозиторий
+git clone https://github.com/ss14-art/hakumai.git
+cd ratgore
+
+# 2. Загрузите движок
+git submodule update --init --recursive
+
+# 3. Соберите проект
+chmod +x Scripts/sh/buildAllRelease.sh
+Scripts/sh/buildAllRelease.sh
+
+# 4. Запустите клиент и сервер
+chmod +x Scripts/sh/runQuickAll.sh
+Scripts/sh/runQuickAll.sh
+```
+
+**Готово!** Подключитесь к **localhost** в клиенте и играйте
+
+## 📜 Лицензия
+
+Код проекта распространяется под лицензией **GNU AGPLv3**. Ассеты имеют различные лицензии (в основном CC-BY-SA 3.0).
+
+Подробную информацию о лицензиях смотрите в файле [LEGAL.md](./LEGAL.md).
 
 
-## License
-
-All code for the content repository is licensed under the [MIT license](https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT).  
-
-Most assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. Assets have their license and copyright specified in the metadata file. For example, see the [metadata for a crowbar](https://github.com/space-wizards/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).  
-
-> [!NOTE]
-> Some assets are licensed under the non-commercial [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar non-commercial licenses and will need to be removed if you wish to use this project commercially.
