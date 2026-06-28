@@ -1,5 +1,5 @@
 <div class="header" align="center">  
-<img alt="Space Station 14" width="880" height="300" src="https://github.com/user-attachments/assets/d84d8fd3-a7e5-432f-8335-5b77819d91c8">  
+<img alt="Space Station 14" width="880" height="auto" src="https://github.com/user-attachments/assets/d84d8fd3-a7e5-432f-8335-5b77819d91c8">  
 </div>
 
 <div align="center">
