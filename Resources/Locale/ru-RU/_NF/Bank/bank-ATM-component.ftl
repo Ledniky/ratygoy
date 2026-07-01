@@ -18,12 +18,12 @@ bank-atm-menu-deposit-successful = Депозит принят
 bank-atm-menu-withdraw-successful = Перевод одобрен
 bank-atm-menu-wrong-cash = Неверный тип валюты
 station-bank-atm-menu-title = Управление станцией
-# Withdrawal reasons (Причины снятия)
+# Withdrawal reasons
 station-bank-payroll = Выплата зарплаты
 station-bank-work-order = Наряд на работы
 station-bank-supplies = Снабжение станции
 station-bank-bounty = Награда за заказ
-# Deposit reasons (Причины внесения)
+# Deposit reasons
 station-bank-fines = Штрафы
 station-bank-donation = Пожертвование
 station-bank-assets-sold = Продажа активов
