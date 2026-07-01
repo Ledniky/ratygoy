@@ -1,1 +1,0 @@
-cmd-addbodypart-help = Usage: addbodypart <entity uid> <body uid> <part slot> <part type>
