@@ -1,11 +1,11 @@
-ent-BenchComfy = comfortable bench
-    .desc = A bench with an extremely comfortable backrest.
+ent-BenchComfy = удобная скамейка
+    .desc = Скамейка с очень удобной спинкой.
 ent-BenchColorfulComfy = { ent-BenchComfy }
-    .desc = A bench with an extremely comfortable backrest.
-    .suffix = Solo. Colorful
+    .desc = Скамейка с очень удобной спинкой.
+    .suffix = Одинарный, Цветной
 ent-BenchRedComfy = { ent-BenchComfy }
     .desc = { ent-BenchComfy.desc }
-    .suffix = Solo. Red
+    .suffix = Одинарный, Красный
 ent-BenchBlueComfy = { ent-BenchComfy }
     .desc = { ent-BenchComfy.desc }
-    .suffix = Solo. Blue
+    .suffix = Одинарный. Синий

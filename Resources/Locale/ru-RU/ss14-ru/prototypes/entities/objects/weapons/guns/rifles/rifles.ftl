@@ -1,25 +1,15 @@
 ent-BaseWeaponRifle = BaseWeaponRifle
-    .desc = A rooty tooty point and shooty.
-ent-WeaponRifleAk = AKMS
-    .desc = A somewhat battered combat rifle of a design originating from old Earth. Favored by criminals, militias, and terrorists due to its famed reliability and easy-to-manufacture design. Feeds from .30 rifle magazines.
-ent-WeaponRifleCiggyLauncher = Tactical Cigarette Infuser
-    .desc = An aggressive marketing strategy.
-ent-WeaponRifleM90GrenadeLauncher = M90 GL
-    .desc = An older bullpup carbine model, with an attached underbarrel grenade launcher.
-        Feeds from .20 rifle magazines.
-ent-WeaponRifleLecter = Lecter
-    .desc = Popular gas-operated combat rifle used heavily by Nanotrasen and the Solar Legion. Operating in semi or fully automatic, its accuracy, stopping power, and reliability make it excel in all manner of environments.
-        Feeds from .20 rifle magazines.
+    .desc = Дерзай — налетай, целься и стреляй.
+ent-WeaponRifleAk = АКМС
+    .desc = Несколько побитая боевая винтовка, конструкция которой берёт своё начало на старой Земле. Популярна среди преступников, ополченцев и террористов благодаря своей известной надёжности и простой конструкции. Использует патроны калибра .30 винтовочный.
+ent-WeaponRifleM90GrenadeLauncher = М-90gl
+    .desc = Карабин старой модели, выполненный по схеме булл-пап, с подствольным гранатомётом. Использует патроны калибра .20 винтовочный.
+ent-WeaponRifleLecter = Лектер
+    .desc = Первоклассная армейская штурмовая винтовка. Использует патроны калибра .20 винтовочный.
 ent-WeaponRifleLecterXL8 = XL8
-    .desc = The Experimental Lecter 8
-        An unreasonably expensive military grade assault rifle with integrated optic.
-        Uses .20 rifle ammo.
-ent-WeaponRifleEstoc = Estoc DMR
-    .desc = A designated marksman rifle firing in 3-round bursts. The Estoc was designed as the Lecter’s long-range counterpart, equipped with an extended 20-inch barrel and telescopic sight.
-        Feeds from .20 rifle magazines.
-ent-WeaponRifleFoam = Foam Force Astro Ace
-    .desc = A premium foam rifle of the highest quality. Its plastic feels rugged, and its mechanisms sturdy.
-ent-WeaponRifleVulcan = Vulcan
-    .desc = One of the heaviest small arms to grace Security's armory, this rifle is a modern take on the classic FAL, informally dubbed the "Right Arm of the Free World". Uses .30 rifle ammo.
-ent-WeaponRifleM90NoGL = M-90
-    .desc = An older bullpup carbine model. Uses .20 rifle ammo.
+    .desc =
+        Экспериментальный лектер 8
+        Необоснованно дорогая штурмовая винтовка военного образца со встроенным оптическим прицелом.
+        Использует патроны калибра .20 винтовочный.
+ent-WeaponRifleEstoc = марксманская винтовка Эсток
+    .desc = Марксманская винтовка, предпочитаемая для перестрелок на средних и дальних дистанциях. Использует патроны калибра .20 винтовочный.

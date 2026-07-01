@@ -1,56 +1,56 @@
 # Command
-highlights-captain = Captain, "Cap", Bridge, Command
-highlights-head-of-personnel = Head Of Personnel, "HoP", Service, Bridge, Command
-highlights-chief-engineer = Chief Engineer, "CE", Engineering, Engineer, "Engi", Bridge, Command
-highlights-chief-medical-officer = Chief Medical Officer, "CMO", Medbay, Medical, "Med", Bridge, Command
-highlights-head-of-security = Head of Security, "HoS", Armory, Security, "Sec", Bridge, Command
-highlights-quartermaster = Quartermaster, "QM", Cargo, Supply, Bridge, Command
-highlights-research-director = Research Director, "RD", Science, "Sci", "RND", "R&D", Bridge, Command
+highlights-captain = Капитан, "кеп", "кэп", мостик, командовани
+highlights-head-of-personnel = глава персонала, "гп", сервис, мостик, командовани
+highlights-chief-engineer = старший инженер, "си", инженер, "инж", мостик, командовани
+highlights-chief-medical-officer = главный врач, главврач "гв", медблок, медбей, "мед", мостик, командовани
+highlights-head-of-security = глава службы безопасности, "гсб", служба безопасности, "сб", мостик, командовани
+highlights-quartermaster = квартирмейстер, "км" "кма", карго, снабжени, мостик, командовани
+highlights-research-director = научный руководитель, научрук, "нр", наука, "рнд", "нио", мостик, командовани
 
 # Security
-highlights-detective = Detective, "Det", Armory, Security, "Sec"
-highlights-security-cadet = Security Cadet, Secoff, Cadet, Armory, Security, "Sec"
-highlights-security-officer = Security Officer, Secoff, Officer, Armory, Security, "Sec"
-highlights-warden = Warden, "Ward", Brig, Genpop, Jail, "Prison", Armory, Security, "Sec"
+highlights-detective = детектив, "дек", служб, "сб"
+highlights-security-cadet = офицер, кадет, служба безопасности, "сб"
+highlights-security-officer = офицер, служба безопасности, "сб"
+highlights-warden = смотрител, варден, служба безопасности, "сб"
 
 # Cargo
-highlights-cargo-technician = Cargo Technician, Cargo Tech, "Cargo", Supply
-highlights-salvage-specialist = Salvage Specialist, Salvager, Salvage, "Salv", Miner, "Cargo", Supply
+highlights-cargo-technician = грузчик, карго, снабжени
+highlights-salvage-specialist = утилизатор, "утиль", карго, снабжени, шахтёр
 
 # Engineering
-highlights-atmospheric-technician = Atmospheric Technician, Atmos Tech, Atmospheric, Engineering, "Atmos", "Engi"
-highlights-station-engineer = Station Engineer, Engineering, Engineer, "Engi"
-highlights-technical-assistant = Technical Assistant, Tech Assistant, Engineering, Engineer, "Engi"
+highlights-atmospheric-technician = атмосферный техник, атмосферник, атмос, инженер, "атмос", "инж"
+highlights-station-engineer = инженер, "инж"
+highlights-technical-assistant = технический ассистент, тех асист, инженер, "инж"
 
 # Medical
-highlights-chemist = Chemist, Chemistry, "Chem", Medbay, Medical, "Med"
-highlights-medical-doctor = Medical Doctor, Doctor, "Doc", Medbay, Medical, "Med"
-highlights-medical-intern = Medical Intern, Intern, Medbay, Medical, "Med"
-highlights-paramedic = Paramedic, "Para", "Medic", Medbay, Medical, "Med"
+highlights-chemist = химик, химия, медблок, медбей, "мед"
+highlights-medical-doctor = врач, доктор, "док", медблок, медбей, "мед"
+highlights-medical-intern = интерн "док", медблок, медбей, "мед"
+highlights-paramedic = парамед, медблок, медбей, "мед"
 
 # Science
-highlights-scientist = Scientist, Science, "Sci", "RND", "R&D"
-highlights-research-assistant = Research Assistant, Science, "Sci", "RND", "R&D"
+highlights-scientist = учёный, наука, "рнд", "нио"
+highlights-research-assistant = научный ассистент, наука, "рнд", "нио"
 
 # Civilian
-highlights-bartender = Bartender, Barkeeper, Barkeep, "Bar", Service, "Serv"
-highlights-botanist = Botanist, Botany, Hydroponics, Service, "Serv"
-highlights-chaplain = Chaplain, "Chap", Chapel, Service, "Serv"
-highlights-chef = Chef, "Cook", Kitchen, Service, "Serv"
-highlights-clown = Clown, Theatre, Theater, Service, "Serv"
-highlights-janitor = Janitor, "Jani", Service, "Serv"
-highlights-lawyer = Lawyer, Attorney, "Law", Service, "Serv"
-highlights-librarian = Librarian, Library, Service, "Serv"
-highlights-mime = Mime, Theatre, Theater, Service, "Serv"
-highlights-musician = Musician, "Music", Theatre, Theater, Service, "Serv"
-highlights-passenger = Passenger, Greytider, Graytider, "Tider", "Tide"
-highlights-service-worker = Service Worker, Service, "Serv"
+highlights-bartender = бармен, "бар"
+highlights-botanist = ботаник, гидропоник
+highlights-chaplain = священник, свят, церковь
+highlights-chef = шеф, повар, кухн
+highlights-clown = клоун, клун
+highlights-janitor = уборщик
+highlights-lawyer = адвокат, юрист
+highlights-librarian = библиотекар, библиотека
+highlights-mime = мим
+highlights-musician = музыкант, театрал, артист, сервисный работник, сервисник
+highlights-passenger = пассажир, грейтайдер, "тайдер"
+highlights-service-worker = сервисный работник, сервисник
 
 # Station-specific
-highlights-reporter = Reporter, Journalist, Newsroom, News
-highlights-psychologist = Psychologist, Psychology, "Psych", Medbay, Medical, "Med"
+highlights-reporter = репортёр, репортер, журналист
+highlights-psychologist = психолог
 
 # Silicon
-highlights-personal-ai = Personal AI, "pAI"
-highlights-cyborg = Cyborg, Silicon, Borg, Robotics, "Robot"
-highlights-station-ai = Station AI, Silicon, "AI", "sAI"
+highlights-personal-ai = персональный ии, "пии"
+highlights-cyborg = киборг, борг
+highlights-station-ai = станционный ии, "ии", "сии"

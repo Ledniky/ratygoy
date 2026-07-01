@@ -1,4 +1,4 @@
-ent-ActionBlink = Blink
-    .desc = Teleport to the clicked location.
-ent-ActionVoidApplause = Void Applause
-    .desc = Clap your hands and swap places with the target.
+ent-ActionBlink = Прыжок
+    .desc = Телепортирует в выбранное место.
+ent-ActionVoidApplause = Хлопок пустоты
+    .desc = Хлопните в ладоши и поменяйтесь местами с целью.

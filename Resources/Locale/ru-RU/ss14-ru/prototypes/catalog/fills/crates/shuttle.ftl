@@ -1,6 +1,4 @@
-ent-CrateEngineeringThruster = thruster crate
-    .desc = Contains a thruster flatpack.
-ent-CrateEngineeringGyroscope = gyroscope crate
-    .desc = Contains a gyroscope flatpack.
-ent-CrateEngineeringShuttleStarterKit = shuttle starter kit crate
-    .desc = contains 4 thrusters, a gyroscope, a generator, and a shuttle console board!
+ent-CrateEngineeringThruster = ящик с ракетным двигателем
+    .desc = Содержит упаковку, при помощи которой можно создать ракетный двигатель.
+ent-CrateEngineeringGyroscope = ящик с гироскопом
+    .desc = Содержит упаковку, при помощи которой можно создать гироскоп.

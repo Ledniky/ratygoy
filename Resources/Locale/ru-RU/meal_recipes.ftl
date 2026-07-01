@@ -1,4 +1,3 @@
-bun_recipe = bun recipe
 cotton_bun_recipe = cotton bun recipe
 bagel_recipe = bagel recipe
 poppyseed_bagel_recipe = poppyseed bagel recipe

@@ -1,4 +1,2 @@
-ent-BoxBeaker = beaker box
-    .desc = A box full of beakers.
-ent-BoxMaufacturingCircuitboards = manufacturing starter kit tote
-    .desc = { ent-ToteBase.desc }
+ent-BoxBeaker = коробка мензурок
+    .desc = Полная коробка мензурок.

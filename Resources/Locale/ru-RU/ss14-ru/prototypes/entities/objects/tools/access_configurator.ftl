@@ -1,7 +1,7 @@
-ent-AccessConfigurator = access configurator
-    .desc = Used to modify the access level requirements for airlocks and other lockable devices.
-ent-AccessConfiguratorUniversal = universal access configurator
-    .desc = A modified access configurator used only by the mythical Administrator.
-    .suffix = Admin
-ent-AccessConfiguratorXenoborg = xenoborg access configurator
-    .desc = A modified access configurator used by the xenoborgs.
+ent-AccessConfigurator = конфигуратор доступа
+    .desc = Используется для изменения требований уровня доступа к шлюзам и другим запираемым объектам.
+ent-AccessConfiguratorUniversal = универсальный конфигуратор доступа
+    .desc = Модифицированный конфигуратор доступа, используемый только мифическим Администратором.
+    .suffix = Админ
+ent-AccessConfiguratorXenoborg = конфигуратор доступа ксеноборга
+    .desc = Модифицированный конфигуратор доступа, используемый ксеноборгами.

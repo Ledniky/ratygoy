@@ -1,3 +1,3 @@
-ent-DoorElectronics = door electronics
-    .desc = An electronics board used in doors and airlocks.
+ent-DoorElectronics = микросхема шлюза
+    .desc = Электронная плата, используемая в шлюзах.
     .suffix = { ent-BaseElectronics.suffix }

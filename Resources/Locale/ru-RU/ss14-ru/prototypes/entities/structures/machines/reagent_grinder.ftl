@@ -1,10 +1,10 @@
-ent-KitchenReagentGrinder = reagent grinder
-    .desc = From BlenderTech. Will It Blend? Let's find out!
+ent-KitchenReagentGrinder = измельчитель реагентов
+    .desc = От БлендерТех. Будет ли он работать? Давайте узнаем!
 ent-KitchenReagentGrinderBeaker = { ent-KitchenReagentGrinder }
     .desc = { ent-KitchenReagentGrinder.desc }
     .suffix = beaker
 ent-KitchenReagentGrinderBeakerLarge = { ent-KitchenReagentGrinder }
     .desc = { ent-KitchenReagentGrinder.desc }
     .suffix = large beaker
-ent-ReagentGrinderIndustrial = industrial reagent grinder
-    .desc = An industrial reagent grinder.
+ent-ReagentGrinderIndustrial = промышленный измельчитель реагентов
+    .desc = Промышленный измельчитель реагентов.

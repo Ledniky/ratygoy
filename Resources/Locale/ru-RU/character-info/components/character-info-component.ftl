@@ -1,7 +1,4 @@
-character-info-title = Character
-character-info-roles-antagonist-text = You have no special Roles
-character-info-objectives-label = Objectives
-character-info-no-profession = No Profession
-character-info-off-duty = Off Duty
-character-info-detail-examinable-label = Flavor Text
-character-info-detail-examinable-submit = Submit
+character-info-title = Персонаж
+character-info-roles-antagonist-text = У вас нет специальных ролей
+character-info-objectives-label = Цели
+character-info-no-profession = Нет должности

@@ -58,5 +58,5 @@ ent-SpaceTrafficControlEventScheduler = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
 ent-BasicRoundstartVariation = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
-ent-PersistRoundstartVariation = { ent-BaseGameRule }
+ent-SpaceTrafficControlFriendlyEventScheduler = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }

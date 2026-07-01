@@ -1,12 +1,12 @@
-ent-WeaponEnergyTurretStationMachineCircuitboardBase = sentry turret machine board
-    .desc = A machine printed circuit board for a sentry turret.
+ent-WeaponEnergyTurretStationMachineCircuitboardBase = охранная турель (машинная плата)
+    .desc = Печатная плата для охранной турели.
     .suffix = { ent-BaseMachineCircuitboard.suffix }
 ent-WeaponEnergyTurretAIMachineCircuitboard = { ent-WeaponEnergyTurretStationMachineCircuitboardBase }
     .desc = { ent-WeaponEnergyTurretStationMachineCircuitboardBase.desc }
-    .suffix = AI, Silicon
+    .suffix = ИИ, Синтетики
 ent-WeaponEnergyTurretSecurityMachineCircuitboard = { ent-WeaponEnergyTurretStationMachineCircuitboardBase }
     .desc = { ent-WeaponEnergyTurretStationMachineCircuitboardBase.desc }
-    .suffix = Security
+    .suffix = Служба безопасности
 ent-WeaponEnergyTurretCommandMachineCircuitboard = { ent-WeaponEnergyTurretStationMachineCircuitboardBase }
     .desc = { ent-WeaponEnergyTurretStationMachineCircuitboardBase.desc }
-    .suffix = Command
+    .suffix = Командование

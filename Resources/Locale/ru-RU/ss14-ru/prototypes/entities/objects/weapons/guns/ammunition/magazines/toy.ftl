@@ -1,2 +1,2 @@
-ent-MagazineFoamBox = L6 SAW magazine box (foam dart)
-    .desc = Box containing a 100-round belt of linked... foam darts?
+ent-MagazineFoamBox = коробка боеприпасов (пенопласт)
+    .desc = Коробка с 100-зарядным ремнем, на котором закреплены... пенопластовые дротики?

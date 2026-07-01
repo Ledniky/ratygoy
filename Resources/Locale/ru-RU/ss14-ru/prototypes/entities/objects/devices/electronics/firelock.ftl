@@ -1,3 +1,3 @@
-ent-FirelockElectronics = firelock electronics
-    .desc = An electronics board used to detect differences in pressure, temperature and gas concentrations between the two sides of the door.
+ent-FirelockElectronics = микросхема пожарного шлюза
+    .desc = Электронная плата, используемая для обнаружения разницы в давлении, температуре и концентрации газов между двумя сторонами двери.
     .suffix = { ent-BaseElectronics.suffix }

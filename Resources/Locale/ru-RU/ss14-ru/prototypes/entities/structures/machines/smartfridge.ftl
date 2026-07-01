@@ -1,5 +1,5 @@
-ent-SmartFridge = SmartFridge
-    .desc = A refrigerated storage unit for keeping items cold and fresh.
+ent-SmartFridge = умный холодильник
+    .desc = Охлаждаемое хранилище для складирования лекарств и химикатов.
 ent-SmartFridgeMedical = { ent-SmartFridge }
     .desc = { ent-SmartFridge.desc }
-    .suffix = Medical
+    .suffix = Медицинский

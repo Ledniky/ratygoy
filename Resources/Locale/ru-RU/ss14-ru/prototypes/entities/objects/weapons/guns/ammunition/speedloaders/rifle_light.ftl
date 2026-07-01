@@ -1,2 +1,2 @@
-ent-SpeedLoaderLightRifle = speed loader (.30 rifle)
-    .desc = 5-round 'stripper clip' for quickly reloading the Kardashev-Mosin. Intended to hold general-purpose kinetic ammunition.
+ent-SpeedLoaderLightRifle = спидлоадер (.30 винтовочные)
+    .desc = 5-зарядная обойма для перезарядки винтовки Кардашева-Мосина. Предназначена для хранения кинетических боеприпасов общего назначения.

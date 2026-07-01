@@ -1,4 +1,3 @@
-cmd-showaccessreaders-desc = Toggles showing access reader permissions on the map
 cmd-showaccessreaders-help =
     Overlay Info:
     -Disabled | The access reader is disabled

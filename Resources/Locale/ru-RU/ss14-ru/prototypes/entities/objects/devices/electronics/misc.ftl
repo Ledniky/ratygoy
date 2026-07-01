@@ -1,12 +1,3 @@
-ent-FreezerElectronics = freezer electronics
-    .desc = An electronics board used in kitchen freezers.
-    .suffix = { ent-BaseElectronics.suffix }
-ent-MorgueElectronics = morgue electronics
-    .desc = An electronics board used in the creation of a morgue.
-    .suffix = { ent-BaseElectronics.suffix }
-ent-CrematoriumElectronics = crematorium electronics
-    .desc = An electronics board used in the creation of a cremator.
-    .suffix = { ent-BaseElectronics.suffix }
-ent-BarSignElectronics = bar sign electronics
-    .desc = An electronics board used to make a bar sign.
+ent-FreezerElectronics = микросхема холодильника
+    .desc = Электронная плата, используемая в кухонных холодильниках.
     .suffix = { ent-BaseElectronics.suffix }

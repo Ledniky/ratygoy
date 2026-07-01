@@ -1,7 +1,5 @@
-construction-recipe-gas-pipe-half = gas pipe half
-construction-recipe-gas-pipe-bend = gas pipe bend
-construction-recipe-gas-pipe-t-junction = gas pipe T-junction
-construction-recipe-gas-pipe-fourway = gas pipe fourway
-construction-recipe-heat-exchanger-bend = radiator bend
-construction-recipe-heat-pump-name = heat pump
-construction-recipe-heat-pump-desc = A pump that moves heat from one side to the other.
+construction-recipe-gas-pipe-half = газовая труба (половинная)
+construction-recipe-gas-pipe-bend = газовая труба (угловая)
+construction-recipe-gas-pipe-t-junction = газовая труба (Т-образная)
+construction-recipe-gas-pipe-fourway = газовая труба (четверная)
+construction-recipe-heat-exchanger-bend = радиатор (угловой)

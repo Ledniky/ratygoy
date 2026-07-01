@@ -1,3 +1,3 @@
-ent-MobHellspawn = hellspawn
-    .desc = An unstoppable force of carnage.
+ent-MobHellspawn = адское отродье
+    .desc = Неудержимая сила резни.
     .suffix = { ent-BaseSimpleMob.suffix }
