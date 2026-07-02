@@ -1,0 +1,119 @@
+- type: entity
+  id: MarketLotContainer
+  name: market lot container
+  noSpawn: true
+  components:
+  - type: ContainerContainer
+    containers:
+      lot_items: !type:Container
+        ents: []
+
+- type: entity
+  id: MarketSaleContainer
+  name: market sale container
+  description: Place items here before listing them on the market.
+  parent: BaseStructureDynamic
+  components:
+  - type: Transform
+    anchored: true
+  - type: MarketContainer
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,9,7
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    sprite: /Textures/Structures/Storage/orebox.rsi
+    layers:
+    - state: orebox
+    - state: orebox-top
+      map: [ top ]
+      visible: true
+  - type: Appearance
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.18,-0.48,0.18,0.48"
+        density: 200
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Anchorable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  id: ComputerMarketSale
+  parent: BaseComputerAiAccess
+  name: market sale console
+  description: List items from the nearby container on the player market.
+  components:
+  - type: MarketSaleConsole
+    maxListingsPerPlayer: 10
+    containerSearchRadius: 2.0
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: transfer
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      state: generic_panel_open
+  - type: ActivatableUI
+    key: enum.MarketConsoleUiKey.Sale
+  - type: UserInterface
+    interfaces:
+      enum.MarketConsoleUiKey.Sale:
+        type: MarketSaleConsoleBoundUserInterface
+
+- type: entity
+  id: ComputerMarketRequest
+  parent: BaseComputerAiAccess
+  name: market request console
+  description: Browse and purchase items listed by other players.
+  components:
+  - type: MarketRequestConsole
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      state: generic_panel_open
+  - type: ActivatableUI
+    key: enum.MarketConsoleUiKey.Request
+  - type: UserInterface
+    interfaces:
+      enum.MarketConsoleUiKey.Request:
+        type: MarketRequestConsoleBoundUserInterface

@@ -1,0 +1,29 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      SetSize="500 520"
+                      Title="Market Sale Console">
+    <BoxContainer Orientation="Vertical" Margin="5" SeparationOverride="5">
+
+        <Label Text="Items in Container:" StyleClasses="LabelKeyText"/>
+        <ItemList Name="ContainerList" VerticalExpand="True" SizeFlagsStretchRatio="1"/>
+
+        <PanelContainer StyleClasses="LowDivider" Margin="0 4"/>
+
+        <BoxContainer Orientation="Horizontal">
+            <Label Text="Lot Name:" StyleClasses="LabelKeyText"/>
+            <LineEdit Name="LotNameEdit" HorizontalExpand="True" PlaceHolder="Enter lot name..."/>
+        </BoxContainer>
+        <BoxContainer Orientation="Horizontal">
+            <Label Text="Price (spesos):" StyleClasses="LabelKeyText"/>
+            <SpinBox Name="PriceSpinBox" MinWidth="120" Value="1"/>
+        </BoxContainer>
+        <Button Name="ListButton" Text="List All Items for Sale"/>
+
+        <PanelContainer StyleClasses="LowDivider" Margin="0 4"/>
+
+        <Label Name="ActiveListingsLabel" Text="Your Active Listings (0/10):" StyleClasses="LabelKeyText"/>
+        <ItemList Name="ActiveListingsList" VerticalExpand="True" SizeFlagsStretchRatio="1"/>
+        <Button Name="CancelButton" Text="Cancel Selected Listing"/>
+
+    </BoxContainer>
+</controls:FancyWindow>

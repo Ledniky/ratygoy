@@ -1,0 +1,25 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      SetSize="500 520"
+                      Title="Market Request Console">
+    <BoxContainer Orientation="Vertical" Margin="5" SeparationOverride="5">
+
+        <Label Text="Available Listings:" StyleClasses="LabelKeyText"/>
+        <ItemList Name="ListingsList" VerticalExpand="True" SizeFlagsStretchRatio="2"/>
+
+        <PanelContainer StyleClasses="LowDivider" Margin="0 4"/>
+
+        <Label Text="Lot Contents:" StyleClasses="LabelKeyText"/>
+        <ItemList Name="ContentsList" VerticalExpand="True" SizeFlagsStretchRatio="1" SelectMode="None"/>
+
+        <BoxContainer Orientation="Horizontal">
+            <Label Text="Seller: " StyleClasses="LabelKeyText"/>
+            <Label Name="SellerLabel" Text="-" HorizontalExpand="True"/>
+            <Label Text="Price: " StyleClasses="LabelKeyText"/>
+            <Label Name="PriceLabel" Text="-"/>
+        </BoxContainer>
+
+        <Button Name="BuyButton" Text="Purchase Lot"/>
+
+    </BoxContainer>
+</controls:FancyWindow>

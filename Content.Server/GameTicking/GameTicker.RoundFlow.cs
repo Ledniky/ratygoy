@@ -30,6 +30,7 @@ using Robust.Shared.Utility;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using Content.Server._Art.Market.Components; // Art
 
 namespace Content.Server.GameTicking
 {
@@ -159,6 +160,8 @@ namespace Content.Server.GameTicking
                 if (entity.HasValue)
                 {
                     DefaultMap = entity.Value.Comp.MapId;
+					var mapEnt = _map.GetMap(DefaultMap);  
+					EnsureComp<MarketStorageComponent>(mapEnt);  
                 }
 
                 var end = _gameTiming.CurTime;
@@ -214,6 +217,7 @@ namespace Content.Server.GameTicking
                 DefaultMap = mapId;
                 var ent = _map.GetMap(mapId);
                 EnsureComp<MoneyAccountsComponent>(ent);
+				EnsureComp<MarketStorageComponent>(ent);
                 EnsureComp<CrewMetaRecordsComponent>(ent);
                 EnsureComp<MapBoundsComponent>(ent);
                 EnsureComp<SolarLocationComponent>(ent);
@@ -229,6 +233,7 @@ namespace Content.Server.GameTicking
                     DefaultMap = mapId;
                 var ent = _map.GetMap(mapId);
                 EnsureComp<MoneyAccountsComponent>(ent);
+				EnsureComp<MarketStorageComponent>(ent);
                 EnsureComp<CrewMetaRecordsComponent>(ent);
                 EnsureComp<MapBoundsComponent>(ent);
                 EnsureComp<SolarLocationComponent>(ent);
