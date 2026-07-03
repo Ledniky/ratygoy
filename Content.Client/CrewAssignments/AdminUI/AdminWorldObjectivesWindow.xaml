@@ -1,23 +1,20 @@
 <DefaultWindow xmlns="https://spacestation14.io"
-               Title="World Objectives"
+               Title="{Loc 'admin-world-objectives-window-title'}"
                SetSize="650 600"
                MinSize="650 600">
     <BoxContainer Orientation="Vertical" VerticalExpand="True">
         <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
             <BoxContainer Orientation="Vertical" Access="Public">
-                <Button Name="CreateButton" Text="Create New Objective"/>
-                <Label Text="Ongoing:" Margin="10 10 10 0"
+                <Button Name="CreateButton" Text="{Loc 'admin-world-objectives-window-create-button'}"/>
+                <Label Text="{Loc 'admin-world-objectives-window-ongoing'}" Margin="10 10 10 0"
                          StyleClasses="LabelKeyText" />
                 <BoxContainer Name="CurrentObjectives" Orientation="Vertical" Access="Public">
-
                 </BoxContainer>
-                <Label Text="Completed:" Margin="10 10 10 0"
+                <Label Text="{Loc 'admin-world-objectives-window-completed'}" Margin="10 10 10 0"
                          StyleClasses="LabelKeyText" />
                 <BoxContainer Name="CompletedObjectives" Orientation="Vertical" Access="Public">
-
                 </BoxContainer>
             </BoxContainer>
-
         </ScrollContainer>
     </BoxContainer>
 </DefaultWindow>

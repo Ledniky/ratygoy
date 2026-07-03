@@ -1,12 +1,12 @@
 <DefaultWindow
     xmlns="https://spacestation14.io"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    Title="Job Network"
+    Title="{Loc 'job-net-menu-title'}"
     MinSize="650 470"
     SetSize="650 470">
     <BoxContainer Orientation="Vertical" Access="Public" VerticalExpand="True">
         <BoxContainer Orientation="Horizontal">
-            <Label Text="Account Balance:"
+            <Label Text="{Loc 'job-net-menu-account-balance'}"
               StyleClasses="LabelKeyText" />
             <Label Name="AccountBalanceLabel" Text="" />
         </BoxContainer>
@@ -14,33 +14,33 @@
             <BoxContainer Orientation="Vertical" Access="Public">
                 <Control MinHeight ="30" />
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Currently Working For:" Margin="0 0 10 0"
+                    <Label Text="{Loc 'job-net-menu-working-for'}" Margin="0 0 10 0"
                          StyleClasses="LabelKeyText" />
                     <OptionButton Name="PossibleJobs" Access="Public"/>
                 </BoxContainer>
                 <Control VerticalExpand ="True"/>
                 <BoxContainer Name="AssignmentDetails" Orientation="Vertical">
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Current Assignment:" Margin="0 0 10 0"
+                        <Label Text="{Loc 'job-net-menu-current-assignment'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
-                        <Label Name="CSLabel" Text="Off Duty" Margin="0 0 10 0" />
+                        <Label Name="CSLabel" Text="{Loc 'job-net-menu-off-duty'}" Margin="0 0 10 0" />
                     </BoxContainer>
                     <Control MinHeight ="30" />
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Wage:" Margin="0 0 10 0"
+                        <Label Text="{Loc 'job-net-menu-wage'}" Margin="0 0 10 0"
                           StyleClasses="LabelKeyText" />
                         <Label Name="WageLabel" Text="$0" Margin="0 0 5 0" />
-                        <Label Text="Every 20 Minutes" Margin="0 0 10 0" />
+                        <Label Text="{Loc 'job-net-menu-every-20-min'}" Margin="0 0 10 0" />
                     </BoxContainer>
                     <Control MinHeight ="30" />
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Next Pay In:" Margin="0 0 10 0"
+                        <Label Text="{Loc 'job-net-menu-next-pay'}" Margin="0 0 10 0"
                          StyleClasses="LabelKeyText" />
                         <Label Name="TimeLabel" Text="0" Margin="0 0 5 0" />
                     </BoxContainer>
                     <Control MinHeight ="30" />
                     <BoxContainer Orientation="Horizontal" Name="SLDetails">
-                        <Label Text="Spending Limit:" Margin="0 0 10 0"
+                        <Label Text="{Loc 'job-net-menu-spending-limit'}" Margin="0 0 10 0"
                           StyleClasses="LabelKeyText" />
                         <Label Name="SpendingLabel" Text="$0/$100" Margin="0 0 5 0" />
                     </BoxContainer>
@@ -51,12 +51,12 @@
                 <TabContainer Name="HistoryTabContainer"  VerticalExpand="True">
                     <ScrollContainer Name="Achievements" VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
                         <BoxContainer Orientation="Vertical" Access="Public">
-                            <Label Text="Ongoing:" Margin="10 10 10 0"
+                            <Label Text="{Loc 'job-net-menu-ongoing'}" Margin="10 10 10 0"
                                      StyleClasses="LabelKeyText" />
                             <BoxContainer Name="CurrentObjectives" Orientation="Vertical" Access="Public">
 
                             </BoxContainer>
-                            <Label Text="Completed:" Margin="10 10 10 0"
+                            <Label Text="{Loc 'job-net-menu-completed'}" Margin="10 10 10 0"
                                      StyleClasses="LabelKeyText" />
                             <BoxContainer Name="CompletedObjectives" Orientation="Vertical" Access="Public">
 
@@ -79,24 +79,24 @@
             <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
                 <BoxContainer Orientation="Vertical" Margin="15">
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="ZENITH SECTOR" Margin="0 0 10 0"
+                        <Label Text="{Loc 'job-net-menu-zenith-sector'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
                     </BoxContainer>
                     <Control MinHeight="40" />
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Sector Development:" Margin="0 0 10 0"
+                        <Label Text="{Loc 'job-net-menu-sector-development'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
                         <Label Name="SectorDevelopmentLabel" Text="10" Margin="0 0 10 0" />
                     </BoxContainer>
                     <Control MinHeight="20" />
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Sector Chaos:" Margin="0 0 10 0"
+                        <Label Text="{Loc 'job-net-menu-sector-chaos'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
                         <Label Name="SectorChaosLabel" Text="100/1500" Margin="0 0 10 0" />
                     </BoxContainer>
                     <Control MinHeight="20" />
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Sector Status:" Margin="0 0 10 0"
+                        <Label Text="{Loc 'job-net-menu-sector-status'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
                     </BoxContainer>
                     <PanelContainer StyleClasses="BackgroundPanel" HorizontalExpand="True" MinHeight="120" Margin="10 10 10 0">
@@ -105,15 +105,15 @@
                 </BoxContainer>
 
             </ScrollContainer>
-         
+
             <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
                 <BoxContainer Orientation="Vertical" Margin="15">
                     <Control MinHeight="5"/>
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Current Network Level:"
+                        <Label Text="{Loc 'job-net-menu-current-network-level'}"
                           StyleClasses="LabelKeyText" />
                         <Control MinWidth="20"/>
-                        <Label Name="CurrentLevelLabel" Text="Small Faction" />
+                        <Label Name="CurrentLevelLabel" Text="{Loc 'job-net-menu-small-faction'}" />
                     </BoxContainer>
                     <BoxContainer Orientation="Horizontal" MinHeight="100">
                         <PanelContainer VerticalExpand="True"
@@ -129,10 +129,10 @@
                     </BoxContainer>
                     <Control MinHeight="20" />
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Next Network Level:"
+                        <Label Text="{Loc 'job-net-menu-next-network-level'}"
                           StyleClasses="LabelKeyText" />
                         <Control MinWidth="20"/>
-                        <Label Name="NextLevelLabel" Text="Standard Faction" />
+                        <Label Name="NextLevelLabel" Text="{Loc 'job-net-menu-standard-faction'}" />
                     </BoxContainer>
                     <BoxContainer Orientation="Horizontal" MinHeight="100">
                         <PanelContainer VerticalExpand="True"
@@ -148,7 +148,7 @@
 
                     <BoxContainer Orientation="Horizontal">
                         <Control HorizontalExpand="True" />
-                        <Label Text="Purchase Upgrade:"
+                        <Label Text="{Loc 'job-net-menu-purchase-upgrade'}"
                           StyleClasses="LabelKeyText" />
                         <Button Name="LevelPurchaseButton" Access="Public" />
                     </BoxContainer>
@@ -160,22 +160,22 @@
                 <BoxContainer Orientation="Vertical">
                     <BoxContainer Orientation="Horizontal">
                         <Control MinWidth="10"/>
-                        <Label Text="Stored Precursor:"
+                        <Label Text="{Loc 'job-net-menu-stored-precursor'}"
                           StyleClasses="LabelKeyText" />
                         <Label Name="PrecursorBalanceLabel" Text="1000" />
                         <Control HorizontalExpand="True" />
-                        <Label Text="Secret Phrase:"
+                        <Label Text="{Loc 'job-net-menu-secret-phrase'}"
                             StyleClasses="LabelKeyText" />
                         <Label Name="SecretPhraseLabel" Text="Apple Tractor" />
                     </BoxContainer>
                     <BoxContainer Orientation="Horizontal">
                         <Control MinWidth="10"/>
-                        <Label Text="Rogue Level:"
+                        <Label Text="{Loc 'job-net-menu-rogue-level'}"
                                StyleClasses="LabelKeyText" />
-                        <Label Text="Civillian"
+                        <Label Text="{Loc 'job-net-menu-civilian'}"
                                Name="PLevelText" />
                         <Control HorizontalExpand="True" />
-                        <Button Name="PrecursorGuidebook" Text="Guide" Access="Public" />
+                        <Button Name="PrecursorGuidebook" Text="{Loc 'job-net-menu-guide'}" Access="Public" />
                     </BoxContainer>
                     <BoxContainer Orientation="Horizontal">
                         <ProgressBar Name="PLevelBar"
@@ -195,7 +195,7 @@
                             <TabContainer Name="PrecursorObjectivesTabs"  VerticalExpand="True">
                                 <BoxContainer Orientation="Vertical" Name="Basic" VerticalExpand="True">
                                     <BoxContainer Orientation="Horizontal">
-                                        <Label Text="New Basic Objective:"
+                                        <Label Text="{Loc 'job-net-menu-new-basic-objective'}"
                                             StyleClasses="LabelKeyText" />
                                         <Label Name="ObjectiveTimerLabel" Text="00:00:30" />
                                         <Control HorizontalExpand="True" />
@@ -206,12 +206,12 @@
                                 </BoxContainer>
                                 <BoxContainer Orientation="Vertical" Name="Network" VerticalExpand="True">
                                     <BoxContainer Orientation="Horizontal" Name="NetworkObjectivesRequirement">
-                                        <Label Text="Join a Network to see more objectives"
+                                        <Label Text="{Loc 'job-net-menu-join-network-objectives'}"
                                           StyleClasses="LabelKeyText" />
                                     </BoxContainer>
                                     <BoxContainer Orientation="Vertical" Name="RogueNetworkObjectivesBox">
                                         <BoxContainer Orientation="Horizontal">
-                                            <Label Text="New Network Objective:"
+                                            <Label Text="{Loc 'job-net-menu-new-network-objective'}"
                                               StyleClasses="LabelKeyText" />
                                             <Label Name="NetworkObjectiveTimerLabel" Text="00:00:30" />
                                             <Control HorizontalExpand="True" />
@@ -221,16 +221,16 @@
                                                 <BoxContainer
                                                 HorizontalExpand="True"
                                                 Orientation="Vertical">
-                                                    <Label Access="Public" Text="Hunted? Enter the Secret Passphrase of those hunting you." />
+                                                    <Label Access="Public" Text="{Loc 'job-net-menu-hunted-desc'}" />
                                                     <BoxContainer Orientation="Horizontal">
                                                         <LineEdit Name="HuntedLE"
-                                                        PlaceHolder="Secret Passphrase"
+                                                        PlaceHolder="{Loc 'job-net-menu-secret-passphrase-placeholder'}"
                                                         Access="Public"
                                                         HorizontalExpand="True" />
-                                                        <Button Access="Public" Name="HuntedLEB" Text="Submit" />
+                                                        <Button Access="Public" Name="HuntedLEB" Text="{Loc 'job-net-menu-submit'}" />
                                                     </BoxContainer>
-                                            
-                                                    <Label Access="Public" Text="Reward: 500 Precursor" />
+
+                                                    <Label Access="Public" Text="{Loc 'job-net-menu-reward-500'}" />
                                                 </BoxContainer>
                                             </PanelContainer>
                                             <PanelContainer Name="HuntPanel" StyleClasses="BackgroundPanel" HorizontalExpand="True" MinHeight="30" Margin="10 10 10 0">
@@ -240,99 +240,100 @@
                                                     <Label Name="HuntDescLabel" Access="Public" Text="Hunt Faurns Goldberg and enter their Secret Passphrase." />
                                                     <BoxContainer Orientation="Horizontal">
                                                         <LineEdit Name="HuntLE"
-                                                        PlaceHolder="Secret Passphrase"
+                                                        PlaceHolder="{Loc 'job-net-menu-secret-passphrase-placeholder'}"
                                                         Access="Public"
                                                         HorizontalExpand="True" />
-                                                        <Button Access="Public" Name="HuntLEB" Text="Submit" />
+                                                        <Button Access="Public" Name="HuntLEB" Text="{Loc 'job-net-menu-submit'}" />
                                                     </BoxContainer>
-                                                    <Label Access="Public" Text="Reward: 500 Precursor" />
-                                                    <Label Access="Public" Text="Sector chaos will increase" />
+                                                    <Label Access="Public" Text="{Loc 'job-net-menu-reward-500'}" />
+                                                    <Label Access="Public" Text="{Loc 'job-net-menu-sector-chaos-increase'}" />
                                                 </BoxContainer>
                                             </PanelContainer>
                                             <BoxContainer Name="DealerObjectives" Orientation="Vertical">
-                                                
+
                                             </BoxContainer>
                                         </BoxContainer>
                                     </BoxContainer>
                                 </BoxContainer>
-                                
-                            </TabContainer>
-                        
 
-                            
-                            
+                            </TabContainer>
+
+
+
+
+
                         </BoxContainer>
-                        
+
                         <BoxContainer Orientation="Vertical" Name="Networks" VerticalExpand="True">
                             <BoxContainer Orientation="Horizontal" Name="NetworkRequirementLabel">
-                                <Label Text="Reach the rank of Associate to join a Network"
+                                <Label Text="{Loc 'job-net-menu-reach-associate'}"
                                     StyleClasses="LabelKeyText" />
                             </BoxContainer>
                             <BoxContainer Orientation="Vertical" Name="NetworkContentBox">
-                                
+
                                <BoxContainer Orientation="Horizontal">
                                     <Control MinWidth="10"/>
-                                    <Label Text="Selected Network:"
+                                    <Label Text="{Loc 'job-net-menu-selected-network'}"
                                       StyleClasses="LabelKeyText" />
-                                    <Label Name="RogueNetworkLabel" Text="None" />
+                                    <Label Name="RogueNetworkLabel" Text="{Loc 'job-net-menu-none'}" />
                                 </BoxContainer>
                                 <PanelContainer StyleClasses="BackgroundPanel" HorizontalExpand="True" MinHeight="30" Margin="10 10 10 0">
                                     <BoxContainer Orientation="Vertical">
-                                        <Label Text="Dealer -- Produce, Sell and Smuggle Drugs" />
-                                        <Button Name="DealerSelect" Text="Select" Access="Public" />
+                                        <Label Text="{Loc 'job-net-menu-dealer-desc'}" />
+                                        <Button Name="DealerSelect" Text="{Loc 'job-net-menu-select'}" Access="Public" />
                                     </BoxContainer>
                                 </PanelContainer>
                                  <PanelContainer StyleClasses="BackgroundPanel" HorizontalExpand="True" MinHeight="30" Margin="10 10 10 0">
                                     <BoxContainer Orientation="Vertical">
-                                        <Label Text="Bounty Hunter -- Hunt Dealers and Assassins" />
-                                        <Button Name="BountyHSelect" Text="Select" Access="Public" />
+                                        <Label Text="{Loc 'job-net-menu-bounty-hunter-desc'}" />
+                                        <Button Name="BountyHSelect" Text="{Loc 'job-net-menu-select'}" Access="Public" />
                                     </BoxContainer>
                                 </PanelContainer>
                                 <PanelContainer StyleClasses="BackgroundPanel" HorizontalExpand="True" MinHeight="30" Margin="10 10 10 0">
                                     <BoxContainer Orientation="Vertical">
-                                        <Label Text="Assassin -- Hunt Dealers and Bounty Hunters" />
-                                        <Button Name="AssassinSelect" Text="Select" Access="Public" />
+                                        <Label Text="{Loc 'job-net-menu-assassin-desc'}" />
+                                        <Button Name="AssassinSelect" Text="{Loc 'job-net-menu-select'}" Access="Public" />
                                     </BoxContainer>
                                 </PanelContainer>
-                            
+
                             </BoxContainer>
-                            
+
                         </BoxContainer>
-                        
+
                         <BoxContainer Orientation="Vertical" Name="Purchases" VerticalExpand="True">
                             <BoxContainer Orientation="Horizontal" Name="PurchaseRequirements">
-                                <Label Text="Join a Network to see available purchases"
+                                <Label Text="{Loc 'job-net-menu-join-network-purchases'}"
                                     StyleClasses="LabelKeyText" />
                             </BoxContainer>
                             <BoxContainer Orientation="Vertical" Name="PurchasesContent">
-                                <Label Text="Rank 2:"
+                                <Label Text="{Loc 'job-net-menu-rank-2'}"
                                     StyleClasses="LabelKeyText" />
                                 <BoxContainer Orientation="Vertical" Name="Rank2Content">
-                                    
+
                                 </BoxContainer>
-                                <Label Text="Rank 3:"
+                                <Label Text="{Loc 'job-net-menu-rank-3'}"
                                     StyleClasses="LabelKeyText" />
                                 <BoxContainer Orientation="Vertical" Name="Rank3Content">
 
                                 </BoxContainer>
-                                <Label Text="Rank 4:"
+                                <Label Text="{Loc 'job-net-menu-rank-4'}"
                                     StyleClasses="LabelKeyText" />
                                 <BoxContainer Orientation="Vertical" Name="Rank4Content">
 
                                 </BoxContainer>
-                                <Label Text="Rank 5:"
+                                <Label Text="{Loc 'job-net-menu-rank-5'}"
                                     StyleClasses="LabelKeyText" />
                                 <BoxContainer Orientation="Vertical" Name="Rank5Content">
 
                                 </BoxContainer>
                             </BoxContainer>
                         </BoxContainer>
-                    
+
                     </TabContainer>
                 </BoxContainer>
             </ScrollContainer>
         </TabContainer>
     </BoxContainer>
-    
-    
+
+
 </DefaultWindow>

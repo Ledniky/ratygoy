@@ -6,7 +6,7 @@
     <BoxContainer Orientation="Vertical" Margin="15 5 15 10">
         <BoxContainer Orientation="Horizontal">
             <Label Name="StationNameLabel"
-                   Text="Station Name:"
+                   Text="{Loc 'station-mod-menu-station-name'}"
                    StyleClasses="LabelKeyText" />
         </BoxContainer>
         <Control MinHeight="10"/>
@@ -15,7 +15,7 @@
             <BoxContainer Orientation="Vertical" VerticalExpand="True" Margin="15 5 15 10">
                 <Control MinHeight="5"/>
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Change Faction Name:"
+                    <Label Text="{Loc 'station-mod-menu-change-faction-name'}"
                       StyleClasses="LabelKeyText" />
                     <Control MinWidth="20"/>
                     <LineEdit Name="StationNameField"
@@ -24,11 +24,11 @@
                     HorizontalExpand="True" />
                     <Button Name="StationNameConfirm"
                     Access="Public"
-                    Text="Save"/>
+                    Text="{Loc 'station-mod-menu-save'}"/>
                 </BoxContainer>
                 <Control MinHeight="15"/>
                 <BoxContainer Orientation="Horizontal" MinHeight="80">
-                    <Label Text="Current Faction Owners:"
+                    <Label Text="{Loc 'station-mod-menu-current-owners'}"
                       StyleClasses="LabelKeyText" />
                     <Control MinWidth="20"/>
                     <PanelContainer VerticalExpand="True"
@@ -52,85 +52,85 @@
                 <BoxContainer Orientation="Horizontal">
                     <Control MinWidth="215"/>
                     <LineEdit Name="NewOwnerField"
-                     PlaceHolder="New Owner"
+                     PlaceHolder="{Loc 'station-mod-menu-new-owner-placeholder'}"
                      Access="Public"
                      HorizontalExpand="True" />
                     <Button Name="NewOwnerConfirm"
-                    Text="Save"
+                    Text="{Loc 'station-mod-menu-save'}"
                     Access="Public"/>
                 </BoxContainer>
                 <Control MinHeight="15"/>
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Create Access:"
+                    <Label Text="{Loc 'station-mod-menu-create-access'}"
                         StyleClasses="LabelKeyText" />
                     <Control MinWidth="20"/>
                     <LineEdit Name="AccessCreateField"
-                        PlaceHolder="Access Name"
+                        PlaceHolder="{Loc 'station-mod-menu-access-name-placeholder'}"
                         Access="Public"
                         HorizontalExpand="True" />
                     <Button Name="AccessCreateConfirm"
                         Access="Public"
-                        Text="Create"/>
+                        Text="{Loc 'station-mod-menu-create'}"/>
                 </BoxContainer>
                 <BoxContainer Orientation="Horizontal">
                     <Control HorizontalExpand="True"/>
                     <Button Name="DefaultAccessCreate"
                         Access="Public"
-                        Text="Create Default Accesses"/>
+                        Text="{Loc 'station-mod-menu-create-default-accesses'}"/>
                 </BoxContainer>
                 <Control MinHeight="15"/>
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Delete Access:" Margin="0 0 10 0"
+                    <Label Text="{Loc 'station-mod-menu-delete-access'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
                     <Control HorizontalExpand="True"/>
                     <OptionButton Name="PossibleAccesses" Access="Public"/>
                     <Button Name="AccessDeleteConfirm"
                         Access="Public"
-                        Text="Delete"/>
+                        Text="{Loc 'station-mod-menu-delete'}"/>
                 </BoxContainer>
                 <Control MinHeight="50"/>
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Job Network Status:" Margin="0 0 10 0"
+                    <Label Text="{Loc 'station-mod-menu-job-net-status'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
                     <Control HorizontalExpand="True"/>
                     <Button Name="JobNetOn"
                         Access="Public"
-                        Text="Enabled"/>
+                        Text="{Loc 'station-mod-menu-enabled'}"/>
                     <Button Name="JobNetOff"
                         Access="Public"
-                        Text="Disabled"/>
+                        Text="{Loc 'station-mod-menu-disabled'}"/>
                 </BoxContainer>
                 <Control MinHeight="50"/>
-                <Label Text="-Claim Trade Station To Enable Tax Settings-"
+                <Label Text="{Loc 'station-mod-menu-claim-trade-station'}"
                         Name ="ClaimTradeStationLabel"
                         StyleClasses="LabelKeyText"
                         Access="Public" />
                 <BoxContainer Orientation="Vertical" Name="TaxOptions" Access="Public">
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Import Tax:"
+                        <Label Text="{Loc 'station-mod-menu-import-tax'}"
                             StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
                         <SpinBox Name="ITaxSpinBox" Access="Public" MinWidth="100" Value="0"/>
                         <Button Name="ITaxConfirm" Access="Public"
-                            Text="Save"/>
+                            Text="{Loc 'station-mod-menu-save'}"/>
                     </BoxContainer>
                     <Control MinHeight="15"/>
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Export Tax:"
+                        <Label Text="{Loc 'station-mod-menu-export-tax'}"
                             StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
                         <SpinBox Name="ETaxSpinBox" Access="Public" MinWidth="100" Value="0"/>
                         <Button Name="ETaxConfirm" Access="Public"
-                            Text="Save"/>
+                            Text="{Loc 'station-mod-menu-save'}"/>
                     </BoxContainer>
                     <Control MinHeight="15"/>
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Sales Tax:"
+                        <Label Text="{Loc 'station-mod-menu-sales-tax'}"
                             StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
                         <SpinBox Name="STaxSpinBox" Access="Public" MinWidth="100" Value="0"/>
                         <Button Name="STaxConfirm" Access="Public"
-                            Text="Save"/>
+                            Text="{Loc 'station-mod-menu-save'}"/>
                     </BoxContainer>
                 </BoxContainer>
 
@@ -138,7 +138,7 @@
             <!-- Assignment Management -->
             <BoxContainer Orientation="Vertical" Margin="15">
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Selected Assignment:" Margin="0 0 10 0"
+                    <Label Text="{Loc 'station-mod-menu-selected-assignment'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
                     <Control HorizontalExpand="True"/>
                     <OptionButton Name="PossibleAssignments" Access="Public"/>
@@ -146,56 +146,56 @@
                 <Control MinHeight="30"/>
                 <BoxContainer  Name="AssignmentDetails" Orientation="Vertical">
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Assignment Name:"
+                        <Label Text="{Loc 'station-mod-menu-assignment-name'}"
                             StyleClasses="LabelKeyText" />
                         <Control MinWidth="20"/>
                         <LineEdit Name="AssignmentNameField"
-                            PlaceHolder="Assignment Name"
+                            PlaceHolder="{Loc 'station-mod-menu-assignment-name-placeholder'}"
                             Access="Public"
                             HorizontalExpand="True" />
                         <Button Name="AssignmentNameConfirm" Access="Public"
-                            Text="Save"/>
+                            Text="{Loc 'station-mod-menu-save'}"/>
                     </BoxContainer>
                     <Control MinHeight="15"/>
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Wage:"
+                        <Label Text="{Loc 'station-mod-menu-wage'}"
                             StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
                         <SpinBox Name="WageSpinBox" Access="Public" MinWidth="100" Value="10"/>
                         <Button Name="AssignmentWageConfirm" Access="Public"
-                            Text="Save"/>
+                            Text="{Loc 'station-mod-menu-save'}"/>
                     </BoxContainer>
                     <Control MinHeight="15"/>
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Command Level:"
+                        <Label Text="{Loc 'station-mod-menu-command-level'}"
                             StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
                         <SpinBox Name="CLevelSpinBox" Access="Public" MinWidth="100" Value="10"/>
                         <Button Name="CommandLevelConfirm" Access="Public"
-                            Text="Save"/>
+                            Text="{Loc 'station-mod-menu-save'}"/>
                     </BoxContainer>
                     <Control MinHeight="15"/>
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Spending Limit:"
+                        <Label Text="{Loc 'station-mod-menu-spending-limit'}"
                             StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
                         <SpinBox Name="SpendingLimitSpinBox" Access="Public" MinWidth="100" Value="10"/>
                         <Button Name="SpendingLimitConfirm" Access="Public"
-                            Text="Save"/>
+                            Text="{Loc 'station-mod-menu-save'}"/>
                     </BoxContainer>
                     <Control MinHeight="15"/>
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Core Functions:"
+                        <Label Text="{Loc 'station-mod-menu-core-functions'}"
                             StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
-                        <Button Name="ReassignmentBtn" Access="Public" Text="REASSIGN" ToggleMode="True"/>
-                        <Button Name="ClaimBtn" Access="Public" Text="CLAIM"  ToggleMode="True"/>
-                        <Button Name="GenRecBtn" Access="Public" Text="GEN RECORD"  ToggleMode="True"/>
+                        <Button Name="ReassignmentBtn" Access="Public" Text="{Loc 'station-mod-menu-reassign'}" ToggleMode="True"/>
+                        <Button Name="ClaimBtn" Access="Public" Text="{Loc 'station-mod-menu-claim'}"  ToggleMode="True"/>
+                        <Button Name="GenRecBtn" Access="Public" Text="{Loc 'station-mod-menu-gen-record'}"  ToggleMode="True"/>
                     </BoxContainer>
                     <Control MinHeight="15"/>
                     <BoxContainer Orientation="Vertical">
                         <BoxContainer Orientation="Horizontal">
-                            <Label Text="Access:"
+                            <Label Text="{Loc 'station-mod-menu-access'}"
                                 StyleClasses="LabelKeyText" />
                         </BoxContainer>
                         <BoxContainer Orientation="Horizontal" MinHeight="150">
@@ -224,21 +224,21 @@
                     <BoxContainer Name="DeleteContainer" Orientation="Horizontal">
                         <Control HorizontalExpand="True"/>
                         <Button Name="DeleteAssignment" Access="Public"
-                            Text="Delete Selected Assignment"/>
+                            Text="{Loc 'station-mod-menu-delete-assignment'}"/>
                     </BoxContainer>
                     <BoxContainer Orientation="Horizontal">
                         <LineEdit Name="NewAssignmentNameField" Access="Public"
-                            PlaceHolder="New Assignment Name"
+                            PlaceHolder="{Loc 'station-mod-menu-new-assignment-placeholder'}"
                             HorizontalExpand="True" />
                         <Button Name="CreateAssignment" Access="Public"
-                            Text="Create New Assignment"/>
+                            Text="{Loc 'station-mod-menu-create-assignment'}"/>
                     </BoxContainer>
-                    
+
             </BoxContainer>
             <!-- Radio Management -->
             <BoxContainer Orientation="Vertical" Margin="15">
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Selected Channel:" Margin="0 0 10 0"
+                    <Label Text="{Loc 'station-mod-menu-selected-channel'}" Margin="0 0 10 0"
                            StyleClasses="LabelKeyText" />
                     <Control HorizontalExpand="True"/>
                     <OptionButton Name="PossibleChannels" Access="Public"/>
@@ -246,16 +246,16 @@
                 <Control MinHeight="30"/>
                 <BoxContainer  Name="ChannelDetails" Orientation="Vertical">
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Channel Status:" StyleClasses="LabelKeyText" />
+                        <Label Text="{Loc 'station-mod-menu-channel-status'}" StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
-                        <Button Name="ChannelEnable" Access="Public" Text="Enabled"/>
-                        <Button Name="ChannelDisable" Access="Public" Text="Disabled"/>
+                        <Button Name="ChannelEnable" Access="Public" Text="{Loc 'station-mod-menu-enabled'}"/>
+                        <Button Name="ChannelDisable" Access="Public" Text="{Loc 'station-mod-menu-disabled'}"/>
                     </BoxContainer>
                 </BoxContainer>
                 <Control MinHeight="15"/>
                 <BoxContainer Orientation="Vertical">
                     <BoxContainer Orientation="Horizontal">
-                        <Label Text="Access:"
+                        <Label Text="{Loc 'station-mod-menu-access'}"
                             StyleClasses="LabelKeyText" />
                     </BoxContainer>
                     <BoxContainer Orientation="Horizontal" MinHeight="300">
@@ -284,10 +284,10 @@
             <BoxContainer Orientation="Vertical" Margin="15">
                 <Control MinHeight="5"/>
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Current Faction Level:"
+                    <Label Text="{Loc 'station-mod-menu-current-faction-level'}"
                       StyleClasses="LabelKeyText" />
                     <Control MinWidth="20"/>
-                    <Label Name="CurrentFactionLevelLabel" Text="Small Faction" />
+                    <Label Name="CurrentFactionLevelLabel" Text="{Loc 'station-mod-menu-small-faction'}" />
                 </BoxContainer>
                 <BoxContainer Orientation="Horizontal" MinHeight="100">
                     <PanelContainer VerticalExpand="True"
@@ -299,14 +299,14 @@
                         </PanelContainer.PanelOverride>
                         <RichTextLabel Name="CurrentBenefitsLabel" VerticalExpand="True" HorizontalExpand="True" MinHeight="100"/>
                     </PanelContainer>
-                    
+
                 </BoxContainer>
                 <Control MinHeight="20" />
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Next Faction Level:"
+                    <Label Text="{Loc 'station-mod-menu-next-faction-level'}"
                       StyleClasses="LabelKeyText" />
                     <Control MinWidth="20"/>
-                    <Label Name="NextFactionLevelLabel" Text="Standard Faction" />
+                    <Label Name="NextFactionLevelLabel" Text="{Loc 'station-mod-menu-standard-faction'}" />
                 </BoxContainer>
                 <BoxContainer Orientation="Horizontal" MinHeight="100">
                     <PanelContainer VerticalExpand="True"
@@ -319,13 +319,13 @@
                         <RichTextLabel Name="NextBenefitsLabel"  VerticalExpand="True" HorizontalExpand="True"  MinHeight="100"/>
                     </PanelContainer>
                 </BoxContainer>
-                
+
                 <BoxContainer Orientation="Horizontal">
-                    <Label Text="Faction Account:"
+                    <Label Text="{Loc 'station-mod-menu-faction-account'}"
                       StyleClasses="LabelKeyText" />
                     <Label Name="AccountBalanceLabel" Text="" />
                     <Control HorizontalExpand="True" />
-                    <Label Text="Purchase Upgrade:"
+                    <Label Text="{Loc 'station-mod-menu-purchase-upgrade'}"
                       StyleClasses="LabelKeyText" />
                     <Button Name="LevelPurchaseButton" Access="Public" />
                 </BoxContainer>

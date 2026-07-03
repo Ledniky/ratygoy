@@ -1,10 +1,9 @@
 <DefaultWindow xmlns="https://spacestation14.io"
-            Title="Codex Entry"
+            Title="{Loc 'codex-entry-menu-title'}"
             SetSize="600 400">
     <ScrollContainer HScrollEnabled="False">
         <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
-            <RichTextLabel Name="DescriptionLabel"></RichTextLabel>
+            <RichTextLabel Name="DescriptionLabel"/>
         </BoxContainer>
-
     </ScrollContainer>
 </DefaultWindow>

@@ -1,17 +1,15 @@
 <DefaultWindow xmlns="https://spacestation14.io"
-               Title="Codex Entries"
+               Title="{Loc 'codex-window-title'}"
                SetSize="650 600"
                MinSize="650 600">
     <BoxContainer Orientation="Vertical" VerticalExpand="True">
         <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
             <BoxContainer Orientation="Vertical" Access="Public">
-                <Button Name="CreateButton" Text="Create New Entry" Access="Public"></Button>
-                <Button Name="SectorButton" Text="Edit Sector Status" Access="Public"></Button>
+                <Button Name="CreateButton" Text="{Loc 'codex-window-create-button'}" Access="Public"/>
+                <Button Name="SectorButton" Text="{Loc 'codex-window-sector-button'}" Access="Public"/>
                 <BoxContainer Orientation="Vertical" Access="Public" Name="CodexContainer">
-
                 </BoxContainer>
             </BoxContainer>
-
         </ScrollContainer>
     </BoxContainer>
 </DefaultWindow>

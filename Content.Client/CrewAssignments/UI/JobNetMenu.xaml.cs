@@ -15,6 +15,7 @@ using Robust.Client.Player;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
+using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Linq;
@@ -38,15 +39,27 @@ public sealed partial class JobNetMenu : DefaultWindow
     public JobNetBoundUserInterface? Owner;
     public event Action<CargoProductRow?>? OnItemSelected;
     public Action<string>? OnLabelButtonPressed;
+
     public JobNetMenu()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-        MasterTabContainer.SetTabTitle(0, "Job Network");
-        MasterTabContainer.SetTabTitle(1, "History");
-        MasterTabContainer.SetTabTitle(2, "Sector");
-        MasterTabContainer.SetTabTitle(3, "Upgrades");
-        MasterTabContainer.SetTabTitle(4, "Precursor");
+
+        MasterTabContainer.SetTabTitle(0, Loc.GetString("job-net-menu-tab-job-network"));
+        MasterTabContainer.SetTabTitle(1, Loc.GetString("job-net-menu-tab-history"));
+        MasterTabContainer.SetTabTitle(2, Loc.GetString("job-net-menu-tab-sector"));
+        MasterTabContainer.SetTabTitle(3, Loc.GetString("job-net-menu-tab-upgrades"));
+        MasterTabContainer.SetTabTitle(4, Loc.GetString("job-net-menu-tab-precursor"));
+
+        HistoryTabContainer.SetTabTitle(0, Loc.GetString("job-net-menu-tab-achievements"));
+        HistoryTabContainer.SetTabTitle(1, Loc.GetString("job-net-menu-tab-codex"));
+
+        PrecursorTabs.SetTabTitle(0, Loc.GetString("job-net-menu-tab-objectives"));
+        PrecursorTabs.SetTabTitle(1, Loc.GetString("job-net-menu-tab-networks"));
+        PrecursorTabs.SetTabTitle(2, Loc.GetString("job-net-menu-tab-purchases"));
+
+        PrecursorObjectivesTabs.SetTabTitle(0, Loc.GetString("job-net-menu-tab-basic"));
+        PrecursorObjectivesTabs.SetTabTitle(1, Loc.GetString("job-net-menu-tab-network"));
     }
 
     public void UpdateState(JobNetUpdateState state)
@@ -64,13 +77,12 @@ public sealed partial class JobNetMenu : DefaultWindow
         var dependencies = IoCManager.Instance!;
         var localPlayer = dependencies.Resolve<IPlayerManager>().LocalEntity;
         PossibleJobs.Clear();
-        PossibleJobs.AddItem("Off Duty", 0);
+        PossibleJobs.AddItem(Loc.GetString("job-net-menu-off-duty"), 0);
         if (state.Stations != null)
         {
             int ind = 1;
             foreach (var kv in state.Stations)
             {
-
                 PossibleJobs.AddItem(kv.Value, kv.Key);
                 if (kv.Key == state.SelectedStation)
                     PossibleJobs.Select(ind);
@@ -84,7 +96,7 @@ public sealed partial class JobNetMenu : DefaultWindow
         }
         else
         {
-            CSLabel.Text = "Off Duty";
+            CSLabel.Text = Loc.GetString("job-net-menu-off-duty");
             AssignmentDetails.Visible = false;
         }
         if (state.Wage != null)
@@ -102,7 +114,7 @@ public sealed partial class JobNetMenu : DefaultWindow
         }
         else
         {
-            TimeLabel.Text = "Invalid";
+            TimeLabel.Text = Loc.GetString("job-net-menu-invalid");
         }
         CurrentObjectives.RemoveAllChildren();
         foreach (var objective in state.CurrentObjectives)
@@ -139,7 +151,10 @@ public sealed partial class JobNetMenu : DefaultWindow
             button.OnPressed += _ => OnSelectCodex(codexEntry.Title, codexEntry.Description);
             CodexContainer.AddChild(button);
         }
-        UnlockedNumberLabel.Text = $"[head=3][color=yellow]{totalNum - lockedNum}/{totalNum}[/color] Codex Entries Unlocked[/head]";
+        UnlockedNumberLabel.SetMarkup(Loc.GetString("job-net-menu-codex-unlocked",
+            ("unlocked", totalNum - lockedNum),
+            ("total", totalNum)));
+
         _prototypeManager.Resolve(state.Level, out var levelProto);
         if (levelProto != null)
         {
@@ -149,19 +164,19 @@ public sealed partial class JobNetMenu : DefaultWindow
                 _prototypeManager.Resolve(levelProto.Next, out nextLevelProto);
 
             CurrentLevelLabel.Text = levelProto.Name;
-            string levelDesc = $"Owned Tile Limit:[color=yellow]{levelProto.TileLimit}[/color]";
+            string levelDesc = Loc.GetString("job-net-menu-tile-limit", ("limit", levelProto.TileLimit));
             CurrentBenefitsLabel.SetMarkup(levelDesc);
             string nextLevelDesc;
             if (nextLevelProto == null)
             {
-                NextLevelLabel.Text = "Max Level Attained";
-                nextLevelDesc = "[color=green]Maximum Level Attained[/color]";
+                NextLevelLabel.Text = Loc.GetString("job-net-menu-max-level");
+                nextLevelDesc = Loc.GetString("job-net-menu-max-level-markup");
                 LevelPurchaseButton.Visible = false;
             }
             else
             {
                 NextLevelLabel.Text = nextLevelProto.Name;
-                nextLevelDesc = $"Owned Tile Limit:[color=green]{nextLevelProto.TileLimit}[/color]";
+                nextLevelDesc = Loc.GetString("job-net-menu-tile-limit-next", ("limit", nextLevelProto.TileLimit));
                 LevelPurchaseButton.Visible = true;
                 LevelPurchaseButton.Text = $"${nextLevelProto.Cost}";
             }
@@ -176,10 +191,9 @@ public sealed partial class JobNetMenu : DefaultWindow
             if (proto == null) continue;
             PrecursorObjective precursorObjective = new();
             precursorObjective.ObjectiveLabel.Text = proto.Name;
-            precursorObjective.RewardLabel.Text = $"Reward: {proto.Reward} Precursor";
-            precursorObjective.SectorChaosLabel.Text = $"Will cause minor sector chaos.";
+            precursorObjective.RewardLabel.Text = Loc.GetString("job-net-menu-precursor-reward", ("reward", proto.Reward));
+            precursorObjective.SectorChaosLabel.Text = Loc.GetString("job-net-menu-minor-chaos");
             PrecursorObjectives.AddChild(precursorObjective);
-
         }
         UntilNextPrec = state.PrecursorResetTime;
         UntilNextRogue = state.RogueObjectiveResetTime;
@@ -201,7 +215,7 @@ public sealed partial class JobNetMenu : DefaultWindow
             else
             {
                 PLevelBar.MaxValue = 0;
-                PLevelBarText.Text = $"Maximum Level Attained";
+                PLevelBarText.Text = Loc.GetString("job-net-menu-max-level");
                 PLevelBar.MinValue = rogueLevel.Cost;
                 PLevelBar.Value = state.XP;
             }
@@ -234,50 +248,35 @@ public sealed partial class JobNetMenu : DefaultWindow
                 DealerSelect.Visible = false;
                 BountyHSelect.Visible = false;
                 AssassinSelect.Visible = false;
-
             }
             switch (state.NetworkType)
             {
                 case RogueNetworkType.None:
-                    RogueNetworkLabel.Text = "None";
+                    RogueNetworkLabel.Text = Loc.GetString("job-net-menu-network-none");
                     break;
                 case RogueNetworkType.BountyHunter:
-                    RogueNetworkLabel.Text = "Bounty Hunter";
+                    RogueNetworkLabel.Text = Loc.GetString("job-net-menu-network-bounty-hunter");
                     break;
                 case RogueNetworkType.Assassin:
-                    RogueNetworkLabel.Text = "Assassin";
+                    RogueNetworkLabel.Text = Loc.GetString("job-net-menu-network-assassin");
                     break;
                 case RogueNetworkType.Dealer:
-                    RogueNetworkLabel.Text = "Dealer";
+                    RogueNetworkLabel.Text = Loc.GetString("job-net-menu-network-dealer");
                     break;
-
             }
             SecretPhraseLabel.Text = state.SecretPhrase;
             List<CargoProductPrototype> level1 = new();
             List<CargoProductPrototype> level2 = new();
             List<CargoProductPrototype> level3 = new();
             List<CargoProductPrototype> level4 = new();
-            if(_spriteSystem != null)
+            if (_spriteSystem != null)
             {
-                
                 foreach (var prod in _prototypeManager.EnumeratePrototypes<CargoProductPrototype>())
                 {
-                    if (prod.Group == "syndicatemarket")
-                    {
-                        level1.Add(prod);
-                    }
-                    else if (prod.Group == "syndicatemarket2")
-                    {
-                        level2.Add(prod);
-                    }
-                    else if (prod.Group == "syndicatemarket3")
-                    {
-                        level3.Add(prod);
-                    }
-                    else if (prod.Group == "syndicatemarket4")
-                    {
-                        level4.Add(prod);
-                    }
+                    if (prod.Group == "syndicatemarket") level1.Add(prod);
+                    else if (prod.Group == "syndicatemarket2") level2.Add(prod);
+                    else if (prod.Group == "syndicatemarket3") level3.Add(prod);
+                    else if (prod.Group == "syndicatemarket4") level4.Add(prod);
                 }
                 Rank2Content.RemoveAllChildren();
                 Rank3Content.RemoveAllChildren();
@@ -293,15 +292,12 @@ public sealed partial class JobNetMenu : DefaultWindow
                         PointCost = { Text = $"P {prototype.Cost}" },
                         Icon = { Texture = _spriteSystem.Frame0(prototype.Icon) },
                     };
-                    if(itemLevel < 1)
+                    if (itemLevel < 1)
                     {
                         button.MainButton.Disabled = true;
-                        button.MainButton.ToolTip = "Requires Rogue Level 2";
+                        button.MainButton.ToolTip = Loc.GetString("job-net-menu-requires-level-2");
                     }
-                    button.MainButton.OnPressed += args =>
-                    {
-                        OnItemSelected?.Invoke(button);
-                    };
+                    button.MainButton.OnPressed += args => { OnItemSelected?.Invoke(button); };
                     Rank2Content.AddChild(button);
                 }
                 foreach (var prototype in level2)
@@ -317,12 +313,9 @@ public sealed partial class JobNetMenu : DefaultWindow
                     if (itemLevel < 2)
                     {
                         button.MainButton.Disabled = true;
-                        button.MainButton.ToolTip = "Requires Rogue Level 3";
+                        button.MainButton.ToolTip = Loc.GetString("job-net-menu-requires-level-3");
                     }
-                    button.MainButton.OnPressed += args =>
-                    {
-                        OnItemSelected?.Invoke(button);
-                    };
+                    button.MainButton.OnPressed += args => { OnItemSelected?.Invoke(button); };
                     Rank3Content.AddChild(button);
                 }
                 foreach (var prototype in level3)
@@ -338,12 +331,9 @@ public sealed partial class JobNetMenu : DefaultWindow
                     if (itemLevel < 3)
                     {
                         button.MainButton.Disabled = true;
-                        button.MainButton.ToolTip = "Requires Rogue Level 4";
+                        button.MainButton.ToolTip = Loc.GetString("job-net-menu-requires-level-4");
                     }
-                    button.MainButton.OnPressed += args =>
-                    {
-                        OnItemSelected?.Invoke(button);
-                    };
+                    button.MainButton.OnPressed += args => { OnItemSelected?.Invoke(button); };
                     Rank4Content.AddChild(button);
                 }
                 foreach (var prototype in level4)
@@ -359,25 +349,21 @@ public sealed partial class JobNetMenu : DefaultWindow
                     if (itemLevel < 4)
                     {
                         button.MainButton.Disabled = true;
-                        button.MainButton.ToolTip = "Requires Rogue Level 5";
+                        button.MainButton.ToolTip = Loc.GetString("job-net-menu-requires-level-5");
                     }
-                    button.MainButton.OnPressed += args =>
-                    {
-                        OnItemSelected?.Invoke(button);
-                    };
+                    button.MainButton.OnPressed += args => { OnItemSelected?.Invoke(button); };
                     Rank5Content.AddChild(button);
                 }
-                if(state.KillTarget == null)
+                if (state.KillTarget == null)
                 {
                     HuntPanel.Visible = false;
                 }
                 else
                 {
-                    HuntDescLabel.Text = $"Hunt {state.KillTarget} and enter their Secret Passphrase.";
+                    HuntDescLabel.Text = Loc.GetString("job-net-menu-hunt-target", ("target", state.KillTarget));
                 }
-
             }
-            if(state.DealerObjective == null)
+            if (state.DealerObjective == null)
             {
                 DealerObjectives.RemoveAllChildren();
             }
@@ -385,10 +371,10 @@ public sealed partial class JobNetMenu : DefaultWindow
             {
                 DealerObjectives.RemoveAllChildren();
                 var entry = new BountyEntry(state.DealerObjective, TimeSpan.Zero);
-                entry.RewardLabel.Text = entry.RewardLabel.Text + " (Complete this Bounty for P 500)";
+                entry.RewardLabel.Text = entry.RewardLabel.Text + Loc.GetString("job-net-menu-bounty-reward-bonus");
                 if (state.DealerObjectiveStation != null)
-                    entry.CriminalLabel.Text = $"Deliver To: {state.DealerObjectiveStation}";
-                entry.PrintButton.Text = "Teleport Label";
+                    entry.CriminalLabel.Text = Loc.GetString("job-net-menu-deliver-to", ("station", state.DealerObjectiveStation));
+                entry.PrintButton.Text = Loc.GetString("job-net-menu-teleport-label");
                 entry.OnLabelButtonPressed += () => OnLabelButtonPressed?.Invoke(state.DealerObjective.Id);
                 DealerObjectives.AddChild(entry);
             }
@@ -396,7 +382,6 @@ public sealed partial class JobNetMenu : DefaultWindow
             SectorDevelopmentLabel.Text = $"{state.SectorDevelopment}";
             SectorStatusLabel.SetMarkup(state.SectorStatus);
         }
-
     }
 
     private void OnSelectCodex(string title, string description)
@@ -404,15 +389,13 @@ public sealed partial class JobNetMenu : DefaultWindow
         if (Owner == null || Owner.CodexMenu == null) return;
         Owner.CodexMenu.UpdateState(title, description);
         Owner.CodexMenu.OpenCentered();
-
     }
+
     private void UpdateSkipButton(float deltaSeconds)
     {
         UntilNextPay -= TimeSpan.FromSeconds(deltaSeconds);
         if (UntilNextPay > TimeSpan.Zero)
-        {
             TimeLabel.Text = UntilNextPay.ToString("mm\\:ss");
-        }
         if (UntilNextPrec.TotalSeconds > 0)
         {
             UntilNextPrec -= TimeSpan.FromSeconds(deltaSeconds);
@@ -430,8 +413,8 @@ public sealed partial class JobNetMenu : DefaultWindow
         base.FrameUpdate(args);
         UpdateSkipButton(args.DeltaSeconds);
     }
-
 }
+
 public sealed class JobButton : Button
 {
     public int Id;
