@@ -54,19 +54,17 @@ namespace Content.Client.Access.UI
             SaveMedicalRecordBtn.OnPressed += _ => SaveMedicalRecord();
             PrintMedicalRecordBtn.OnPressed += _ => PrintMedicalRecord();
 
-            MainTabs.SetTabTitle(0, "Assignment");
-            MainTabs.SetTabTitle(1, "General Record");
-            MainTabs.SetTabTitle(2, "Criminal Record");
-            MainTabs.SetTabTitle(3, "Medical Record");
-
-            GeneralTabs.SetTabTitle(0, "View");
-            GeneralTabs.SetTabTitle(1, "Edit");
-
-            CriminalTabs.SetTabTitle(0, "View");
-            CriminalTabs.SetTabTitle(1, "Edit");
-
-            MedicalTabs.SetTabTitle(0, "View");
-            MedicalTabs.SetTabTitle(1, "Edit");
+            MainTabs.SetTabTitle(0, Loc.GetString("id-card-console-window-tab-assignment"));
+            MainTabs.SetTabTitle(1, Loc.GetString("id-card-console-window-tab-general-record"));
+            MainTabs.SetTabTitle(2, Loc.GetString("id-card-console-window-tab-criminal-record"));
+            MainTabs.SetTabTitle(3, Loc.GetString("id-card-console-window-tab-medical-record"));
+  
+            GeneralTabs.SetTabTitle(0, Loc.GetString("id-card-console-window-tab-view"));
+            GeneralTabs.SetTabTitle(1, Loc.GetString("id-card-console-window-tab-edit"));
+            CriminalTabs.SetTabTitle(0, Loc.GetString("id-card-console-window-tab-view"));
+            CriminalTabs.SetTabTitle(1, Loc.GetString("id-card-console-window-tab-edit"));
+            MedicalTabs.SetTabTitle(0, Loc.GetString("id-card-console-window-tab-view"));
+            MedicalTabs.SetTabTitle(1, Loc.GetString("id-card-console-window-tab-edit"));
 
 
         }
@@ -95,7 +93,7 @@ namespace Content.Client.Access.UI
             }
             else
             {
-                SelectedAccountLabel.Text = "*None*";
+                SelectedAccountLabel.Text = Loc.GetString("id-card-console-window-none");
                 AccountDetails.Visible = false;
             }
 
@@ -116,7 +114,7 @@ namespace Content.Client.Access.UI
             }
             else
             {
-                AssignmentLabel.Text = "*Unassigned*";
+                AssignmentLabel.Text = Loc.GetString("id-card-console-window-unassigned");
                 SpendingLabel.Text = $"${state.SpentFunds}/0";
             }
             _lastFullName = state.TargetIdFullName;
