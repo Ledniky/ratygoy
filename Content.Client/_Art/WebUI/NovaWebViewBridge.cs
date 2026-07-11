@@ -35,7 +35,6 @@ public sealed class NovaWebViewBridge : IDisposable
         _resourceManager = resourceManager;
         _webViewManager = webViewManager;
         _trustedPage = trustedPage;
-        _webView.AddBeforeBrowseHandler(OnBeforeBrowse);
         _webView.AddResourceRequestHandler(OnResourceRequest);
     }
 
@@ -56,9 +55,18 @@ public sealed class NovaWebViewBridge : IDisposable
         if (!url.StartsWith(WebUiOrigin, StringComparison.Ordinal))
             return;
 
-        // Bridge navigations are handled by OnBeforeBrowse.
+        // Bridge requests are delivered by the page via fetch() to a synthetic
+        // http://webui.local/__bridge__/<eventType> URL. We answer them here
+        // (in the resource request handler) rather than in OnBeforeBrowse,
+        // because fetch() does not trigger before-browse (that is frame
+        // navigation only). Responding synthetically is also what keeps the
+        // request off the real network stack (webui.local has no DNS), which
+        // matters on setups where the CEF network service is unstable.
         if (url.StartsWith(BridgePrefix, StringComparison.Ordinal))
+        {
+            HandleBridgeRequest(context);
             return;
+        }
 
         var path = url.Substring(WebUiOrigin.Length);
         if (string.IsNullOrEmpty(path))
@@ -76,17 +84,18 @@ public sealed class NovaWebViewBridge : IDisposable
         context.DoRespondStream(stream, mime);
     }
 
-    private void OnBeforeBrowse(IBeforeBrowseContext context)
+    private void HandleBridgeRequest(IRequestHandlerContext context)
     {
-        var url = context.Url;
-        if (!url.StartsWith(BridgePrefix, StringComparison.Ordinal))
-            return;
-
-        context.DoCancel();
+        // Respond first so the fetch() resolves regardless of how parsing goes.
+        // The actual bridge reply is delivered out-of-band via the
+        // nova:complete / nova:error CustomEvents (see DispatchResponse), so
+        // the body here is intentionally empty.
+        context.DoRespondStream(new MemoryStream(), "text/plain", HttpStatusCode.OK);
 
         if (!IsTrustedPage())
             return;
 
+        var url = context.Url;
         try
         {
             var prefixLength = BridgePrefix.Length;
@@ -124,7 +133,7 @@ public sealed class NovaWebViewBridge : IDisposable
         }
         catch
         {
-            // Ignore malformed bridge URLs after cancelling the navigation.
+            // Ignore malformed bridge URLs; the fetch already got an OK.
         }
     }
 
@@ -254,7 +263,6 @@ public sealed class NovaWebViewBridge : IDisposable
             return;
 
         _disposed = true;
-        _webView.RemoveBeforeBrowseHandler(OnBeforeBrowse);
         _webView.RemoveResourceRequestHandler(OnResourceRequest);
         RequestReceived = null;
     }
