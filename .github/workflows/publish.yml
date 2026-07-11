@@ -29,6 +29,11 @@ jobs:
       with:
         dotnet-version: 10.0.x
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
     - name: Get Engine Tag
       run: |
         cd RobustToolbox
@@ -36,6 +41,14 @@ jobs:
 
     - name: Install dependencies
       run: dotnet restore
+
+    - name: Install WebUI dependencies
+      run: |
+        if [ -d "WebUI" ]; then
+          cd WebUI
+          npm ci || npm install
+        fi
+      continue-on-error: false
 
     - name: Build Packaging
       run: dotnet build Content.Packaging --configuration Release --no-restore /m
