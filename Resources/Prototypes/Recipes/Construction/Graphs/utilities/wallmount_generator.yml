@@ -72,9 +72,6 @@
       edges:
       - to: APU
         steps:
-        - material: Uranium
-          amount: 5
-          doAfter: 2
         - tool: Screwing
           doAfter: 2
 

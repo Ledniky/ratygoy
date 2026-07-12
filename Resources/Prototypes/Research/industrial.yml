@@ -105,7 +105,6 @@
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics
   - EmitterCircuitboard
-  - WallmountGeneratorAPUElectronics
 
 - type: technology
   id: AtmosphericTech
