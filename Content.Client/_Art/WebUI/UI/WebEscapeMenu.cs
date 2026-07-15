@@ -19,7 +19,6 @@ public sealed class WebEscapeMenu : DefaultWindow
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly IWebViewManager _webViewManager = default!;
 
-    private readonly WebViewControl _webView;
     private readonly NovaWebViewBridge _bridge;
     private readonly ISawmill _sawmill;
     private bool _showWiki;
@@ -50,25 +49,17 @@ public sealed class WebEscapeMenu : DefaultWindow
             _sawmill.Error("Escape menu HTML is missing: build the WebUI with 'npm run build' in the WebUI/ directory.");
         }
 
-        _webView = new WebViewControl
+        var webView = new WebViewControl
         {
             Url = PageUrl,
             HorizontalExpand = true,
             VerticalExpand = true,
-            // Keep the CEF browser alive across open/close toggles. Without
-            // this, every ESC press creates and tears down a browser
-            // (StartBrowser/CloseBrowser); after several cycles CEF's
-            // off-screen renderer degrades and the menu breaks. AlwaysActive
-            // starts the browser once (here, on construction) and keeps it
-            // alive until the menu is disposed, so toggling ESC just
-            // shows/hides an already-loaded page.
-            AlwaysActive = true,
         };
 
         _sawmill.Debug("WebEscapeMenu WebView created for {0}", PageUrl);
 
-        Contents.AddChild(_webView);
-        _bridge = new NovaWebViewBridge(_webView, _taskManager, _resourceManager, _webViewManager, PageUrl);
+        Contents.AddChild(webView);
+        _bridge = new NovaWebViewBridge(webView, _taskManager, _resourceManager, _webViewManager, PageUrl);
         _bridge.RequestReceived += OnBridgeRequest;
     }
 
@@ -209,19 +200,7 @@ public sealed class WebEscapeMenu : DefaultWindow
 
     protected override void Dispose(bool disposing)
     {
-        if (disposing)
-        {
-            _bridge.Dispose();
-            // AlwaysActive kept the CEF browser alive across ESC toggles.
-            // Drop the flag so the browser is released now, not leaked:
-            //  - if the menu is already closed (out of tree), the setter
-            //    itself calls CloseBrowser();
-            //  - if the menu is still open, base.Dispose tears the control
-            //    out of the tree -> ExitedTree -> CloseBrowser().
-            // Either way the browser closes exactly once.
-            _webView.AlwaysActive = false;
-        }
-
+        _bridge.Dispose();
         base.Dispose(disposing);
     }
 }
