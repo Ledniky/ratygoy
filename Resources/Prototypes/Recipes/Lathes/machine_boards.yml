@@ -209,6 +209,12 @@
 
 - type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseEngineeringMachineRecipeCategory ]
+  id: WallmountGeneratorAPUElectronics
+  result: WallmountGeneratorAPUElectronics
+  unlockUses: 4
+
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseEngineeringMachineRecipeCategory ]
   id: GasGeneratorMachineCircuitboard
   result: GasGeneratorMachineCircuitboard
   unlockUses: 4
