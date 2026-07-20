@@ -6,7 +6,7 @@
   product: CrateEngineeringAMEShielding
   cost: 8000
   category: cargoproduct-category-name-engineering
-  group: market
+  group: engineermarket
   
 - type: cargoProduct
   id: EngineAMEControlETS
@@ -16,4 +16,4 @@
   product: CrateEngineeringAMEControl
   cost: 8000
   category: cargoproduct-category-name-engineering
-  group: market
+  group: engineermarket
