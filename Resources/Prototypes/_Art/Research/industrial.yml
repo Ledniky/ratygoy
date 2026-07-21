@@ -8,7 +8,7 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost: 7500
+  cost: 62500
   recipeUnlocks:
   - Atmossuit
   - SuitAtmosFire  
