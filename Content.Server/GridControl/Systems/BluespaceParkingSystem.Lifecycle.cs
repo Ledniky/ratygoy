@@ -433,36 +433,30 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
     }
 
     private bool TryGetUnparkPlacementLocation(MapId mapId, Vector2 origin, Box2 bounds, Angle worldAngle, out MapCoordinates coords, out Angle angle, float spawnDistance = 20f, int maxIterations = 20)
-    {
-        var finalCoords = new MapCoordinates(origin, mapId);
+    // Art-start
+	{
         angle = worldAngle;
+        var candidate = origin + (worldAngle + Math.PI / 2).ToVec() * DockingSystem.DockRange;
 
         for (var i = 0; i < maxIterations; i++)
         {
-            var box2 = Box2.CenteredAround(finalCoords.Position, bounds.Size);
-            var box2Rot = new Box2Rotated(box2, angle, finalCoords.Position).Enlarged(-0.5f);
+            var box2 = Box2.CenteredAround(candidate, bounds.Size);
+            var box2Rot = new Box2Rotated(box2, angle, candidate).Enlarged(-0.5f);
 
-            // This doesn't stop it from spawning on top of random things in space
-            if (_mapManager.FindGridsIntersecting(finalCoords.MapId, box2Rot).Any())
+            if (!_mapManager.FindGridsIntersecting(mapId, box2Rot).Any())
             {
-                // Bump it further and further just in case.
-                var fraction = (float)(i + 1) / maxIterations;
-                var randomPos = origin +
-                    (worldAngle + Math.PI / 2).ToVec() * (DockingSystem.DockRange + (spawnDistance * fraction));
-                finalCoords = new MapCoordinates(randomPos, mapId);
-                continue;
+                coords = new MapCoordinates(candidate, mapId);
+                return true;
             }
-            else if (i == 0)
-            {
-                var pos = origin + (worldAngle + Math.PI / 2).ToVec() * DockingSystem.DockRange;
-                finalCoords = new MapCoordinates(pos, mapId);
-            }
-            coords = finalCoords;
-            return true;
+
+            var fraction = (float)(i + 1) / maxIterations;
+            candidate = origin +
+                (worldAngle + Math.PI / 2).ToVec() * (DockingSystem.DockRange + (spawnDistance * fraction));
         }
 
         angle = Angle.Zero;
         coords = MapCoordinates.Nullspace;
         return false;
     }
+	// Art-end
 }

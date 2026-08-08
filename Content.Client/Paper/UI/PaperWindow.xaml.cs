@@ -52,12 +52,21 @@ namespace Content.Client.Paper.UI
             typeof(MonoTag),
             typeof(FormTagHandler),
             typeof(SignatureTagHandler),
-            typeof(CheckTagHandler)
+            typeof(CheckTagHandler),
+			// Art-start
+            typeof(DateTagHandler),
+            typeof(SpeciesTagHandler),
+            typeof(GenderTagHandler),
+			// Art-end
         ];
 
         public event Action<string>? OnSaved;
         public event Action<int>? OnSignatureRequested;
         public event Action<string>? OnSignatureFieldRequested;
+		// Art-start
+		public event Action<int>? OnSpeciesRequested;
+		public event Action<int>? OnGenderRequested;
+		// Art-end
 
         private int _maxInputLength = -1;
         public int MaxInputLength
@@ -289,6 +298,11 @@ namespace Content.Client.Paper.UI
             FormTagHandler.ResetFormCounter();
             SignatureTagHandler.ResetSignatureCounter();
             CheckTagHandler.ResetCheckCounter();
+			// Art-start
+			DateTagHandler.ResetDateCounter();
+            SpeciesTagHandler.ResetSpeciesCounter();
+            GenderTagHandler.ResetGenderCounter();
+			// Art-end
 
             var fm = new FormattedMessage();
             fm.AddMarkupPermissive(state.Text);
@@ -416,6 +430,10 @@ namespace Content.Client.Paper.UI
 
         public void SendSignatureRequest(int signatureIndex) => OnSignatureRequested?.Invoke(signatureIndex);
         public void SendFieldSignatureRequest(string field) => OnSignatureFieldRequested?.Invoke(field);
+		// Art-start
+		public void SendSpeciesRequest(int index) => OnSpeciesRequested?.Invoke(index);
+		public void SendGenderRequest(int index) => OnGenderRequested?.Invoke(index);
+		// Art-end
         private Button? FindFormButton(int index) => FindNthButton(WrittenTextLabel, index, Loc.GetString("paper-form-fill-button"));
         private Button? FindCheckButton(int index) => FindNthButton(WrittenTextLabel, index, PaperTagHelper.CheckSymbols);
 
@@ -509,7 +527,7 @@ namespace Content.Client.Paper.UI
         }
 
         private static int CountTags(string text) =>
-            CountOccurrences(text, "[form]") + CountOccurrences(text, "[signature]") + CountOccurrences(text, "[check]");
+            CountOccurrences(text, "[form]") + CountOccurrences(text, "[signature]") + CountOccurrences(text, "[check]") + CountOccurrences(text, "[date]") + CountOccurrences(text, "[species]") + CountOccurrences(text, "[gender]");  // Art-edit
 
         private static int CountOccurrences(string text, string substring)
         {

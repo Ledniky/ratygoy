@@ -1,6 +1,7 @@
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Research.Components;
 using System.Linq;
+using Content.Shared.IdentityManagement; // Art-edit
 
 namespace Content.Server.Research.Systems;
 
@@ -11,6 +12,10 @@ public sealed partial class ResearchSystem
         SubscribeLocalEvent<ResearchServerComponent, ComponentStartup>(OnServerStartup);
         SubscribeLocalEvent<ResearchServerComponent, ComponentShutdown>(OnServerShutdown);
         SubscribeLocalEvent<ResearchServerComponent, TechnologyDatabaseModifiedEvent>(OnServerDatabaseModified);
+        // Art-start
+        SubscribeLocalEvent<ResearchServerComponent, BoundUIOpenedEvent>(OnServerBuiOpened);
+        SubscribeLocalEvent<ResearchServerComponent, ToggleResearchClientMessage>(OnToggleResearchClient);
+        // Art-end
     }
 
     private void OnServerStartup(EntityUid uid, ResearchServerComponent component, ComponentStartup args)
@@ -41,6 +46,70 @@ public sealed partial class ResearchSystem
     {
         return this.IsPowered(uid, EntityManager);
     }
+
+    // Art-start
+    private void OnServerBuiOpened(EntityUid uid, ResearchServerComponent component, BoundUIOpenedEvent args)
+    {
+        UpdateServerUi((uid, component));
+    }
+
+    private void OnToggleResearchClient(EntityUid uid, ResearchServerComponent component, ToggleResearchClientMessage args)
+    {
+        var client = GetEntity(args.Client);
+
+        if (!HasComp<ResearchClientComponent>(client))
+            return;
+
+        if (component.AllowedClients.Contains(client))
+        {
+            component.AllowedClients.Remove(client);
+            UnregisterClient(client, uid, serverComponent: component);
+        }
+        else
+        {
+            component.AllowedClients.Add(client);
+        }
+
+        Dirty(uid, component);
+        UpdateServerUi((uid, component));
+        UpdateClientInterface(client);
+    }
+
+    private void UpdateServerUi(Entity<ResearchServerComponent> ent)
+    {
+        if (!_uiSystem.IsUiOpen(ent.Owner, ResearchServerUiKey.Key))
+            return;
+
+        var serverXform = Transform(ent.Owner);
+        if (serverXform.GridUid is not { } grid)
+            return;
+
+        var clientSet = new HashSet<Entity<ResearchClientComponent>>();
+        _lookup.GetGridEntities(grid, clientSet);
+
+        var clientList = new List<(NetEntity, string, string)>();
+
+        foreach (var client in clientSet)
+        {
+            var worldPos = _xformSystem.GetWorldPosition(client.Owner);
+            var posStr = $"({(int)MathF.Round(worldPos.X)}, {(int)MathF.Round(worldPos.Y)})";
+
+            var name = Identity.Name(client.Owner, EntityManager);
+            var allowed = ent.Comp.AllowedClients.Contains(client.Owner);
+            var connected = ent.Comp.Clients.Contains(client.Owner);
+
+            var displayText = Loc.GetString("research-server-ui-client-entry",
+                ("name", name),
+                ("pos", posStr),
+                ("allowed", allowed),
+                ("connected", connected));
+
+            clientList.Add((GetNetEntity(client.Owner), displayText, name));
+        }
+
+        _uiSystem.SetUiState(ent.Owner, ResearchServerUiKey.Key, new ResearchServerBuiState(clientList));
+    }
+    // Art-end
 
     private void UpdateServer(EntityUid uid, int time, ResearchServerComponent? component = null)
     {

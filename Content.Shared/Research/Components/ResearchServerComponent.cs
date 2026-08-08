@@ -1,5 +1,6 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Robust.Shared.Serialization; // Art-edit
 
 namespace Content.Shared.Research.Components;
 
@@ -36,6 +37,11 @@ public sealed partial class ResearchServerComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public List<EntityUid> Clients = new();
 
+    // Art-start
+    [ViewVariables(VVAccess.ReadOnly)]
+    public HashSet<EntityUid> AllowedClients = new();
+    // Art-end
+
     [DataField("nextUpdateTime", customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan NextUpdateTime = TimeSpan.Zero;
 
@@ -60,3 +66,32 @@ public readonly record struct ResearchServerPointsChangedEvent(EntityUid Server,
 [ByRefEvent]
 public record struct ResearchServerGetPointsPerSecondEvent(EntityUid Server, int Points);
 
+// Art-start
+[NetSerializable, Serializable]
+public enum ResearchServerUiKey
+{
+    Key,
+}
+
+[Serializable, NetSerializable]
+public sealed class ResearchServerBuiState : BoundUserInterfaceState
+{
+    public readonly List<(NetEntity Entity, string DisplayText, string SortKey)> Clients;
+
+    public ResearchServerBuiState(List<(NetEntity, string, string)> clients)
+    {
+        Clients = clients;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class ToggleResearchClientMessage : BoundUserInterfaceMessage
+{
+    public readonly NetEntity Client;
+
+    public ToggleResearchClientMessage(NetEntity client)
+    {
+        Client = client;
+    }
+}
+// Art-end

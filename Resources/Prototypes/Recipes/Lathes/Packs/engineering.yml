@@ -22,6 +22,7 @@
   - HandheldStationMap
   - ClothingHeadHatWelding
   - ClothingHeadHatCone
+  - ClothingHeadHatHardhatYellowEmpty
   - AccessConfigurator
   - ToolboxMechanical
   - VoiceSensorCopper
@@ -70,12 +71,22 @@
   - TrappedFluidExtractorMachineCircuitboard
   - GridControlComputerCircuitboard
 
+- type: latheRecipePack
+  id: EngineeringHardhatsStatic # Persi14
+  recipes:
+  - ClothingHeadHatHardhatBlueEmpty
+  - ClothingHeadHatHardhatOrangeEmpty
+  - ClothingHeadHatHardhatRedEmpty
+  - ClothingHeadHatHardhatWhiteEmpty
+  - ClothingHeadHatHardhatYellowEmpty
+
 ## Dynamic
 
 - type: latheRecipePack
   id: AdvancedTools
   recipes:
   - RCD
+  - RCDAmmo
   - HCD
   - PowerDrill
   - WelderExperimental

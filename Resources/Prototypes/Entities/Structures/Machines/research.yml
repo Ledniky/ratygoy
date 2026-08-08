@@ -76,6 +76,15 @@
   - type: GuideHelp
     guides:
     - Science
+  # Art-start
+  - type: ActivatableUI
+    key: enum.ResearchServerUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.ResearchServerUiKey.Key:
+        type: ResearchServerBoundUserInterface
+  # Art-end
 
 - type: entity
   id: BaseResearchAndDevelopmentPointSource

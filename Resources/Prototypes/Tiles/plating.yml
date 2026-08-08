@@ -92,7 +92,13 @@
 - type: tile
   id: Lattice
   name: tiles-lattice
-  sprite: /Textures/Tiles/lattice.png
+  # art-start
+  sprite: /Textures/Tiles/empty.png
+  smoothKey: lattice
+  smoothBase: lattice
+  smoothRsi: /Textures/_Art/Tiles/lattice.rsi
+  smoothConnectAll: true
+  # art-end
   baseTurf: Space
   isSubfloor: true
   deconstructTools: [ Cutting ]

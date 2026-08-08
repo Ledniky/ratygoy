@@ -38,6 +38,16 @@ namespace Content.Shared.Maps
         [DataField("edgeSprites")] public Dictionary<Direction, ResPath> EdgeSprites { get; private set; } = new();
 
         [DataField("edgeSpritePriority")] public int EdgeSpritePriority { get; private set; } = 0;
+		
+		// art-start
+		[DataField("smoothKey")] public string? SmoothKey { get; private set; }
+  
+		[DataField("smoothBase")] public string? SmoothBase { get; private set; }
+  
+		[DataField("smoothRsi")] public ResPath? SmoothRsi { get; private set; }
+		
+		[DataField("smoothConnectAll")] public bool SmoothConnectAll { get; private set; } = false;
+		// art-end
 
         [DataField("isSubfloor")] public bool IsSubFloor { get; private set; }
 

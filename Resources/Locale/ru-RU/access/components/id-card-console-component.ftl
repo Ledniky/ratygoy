@@ -28,4 +28,6 @@ id-card-console-window-tab-medical-record = Медицинская запись
 id-card-console-window-tab-view = Просмотр
 id-card-console-window-tab-edit = Редактирование
 id-card-console-window-none = *Нет*
-id-card-console-window-unassigned = *Не назначен*
+id-card-console-window-unassigned = *Не назначен
+id-card-console-window-list-name-header = Имя [Назначение]
+id-card-console-window-list-last-paid-header = Последняя оплата

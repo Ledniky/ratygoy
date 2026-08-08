@@ -26,6 +26,10 @@ public sealed class PaperBoundUserInterface : BoundUserInterface
         _window.OnSaved += InputOnTextEntered;
         _window.OnSignatureRequested += OnSignatureRequested;
         _window.OnSignatureFieldRequested += OnSignatureFieldRequested;
+		// art-start
+		_window.OnSpeciesRequested += OnSpeciesRequested;
+		_window.OnGenderRequested += OnGenderRequested;
+		// art-end
 
         if (EntMan.TryGetComponent<PaperComponent>(Owner, out var paper))
         {
@@ -56,5 +60,9 @@ public sealed class PaperBoundUserInterface : BoundUserInterface
 
     private void OnSignatureRequested(int signatureIndex) => SendMessage(new PaperSignatureRequestMessage(signatureIndex));
     private void OnSignatureFieldRequested(string field) => SendMessage(new PaperSignatureFieldRequestMessage(field));
+	// art-start
+	private void OnSpeciesRequested(int index) => SendMessage(new PaperSpeciesRequestMessage(index));
+	private void OnGenderRequested(int index) => SendMessage(new PaperGenderRequestMessage(index));
+	// art-end
 
 }

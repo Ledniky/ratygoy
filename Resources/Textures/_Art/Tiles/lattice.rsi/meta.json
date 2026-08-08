@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "odlieerr",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "full"
+    },
+    {
+      "name": "lattice0",
+      "directions": 4
+    },
+    {
+      "name": "lattice1",
+      "directions": 4
+    },
+    {
+      "name": "lattice2",
+      "directions": 4
+    },
+    {
+      "name": "lattice3",
+      "directions": 4
+    },
+    {
+      "name": "lattice4",
+      "directions": 4
+    },
+    {
+      "name": "lattice5",
+      "directions": 4
+    },
+    {
+      "name": "lattice6",
+      "directions": 4
+    },
+    {
+      "name": "lattice7",
+      "directions": 4
+    }
+  ]
+}

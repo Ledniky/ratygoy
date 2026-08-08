@@ -12,9 +12,9 @@ autosaveinterval = 60
 tags = "rp:none"
 
 [infolinks]
-bug_report = "https://github.com/michaelchessall/SS14-Persistence/issues/new/choose"
-discord    = "https://discord.gg/PRjRkAN5NU"
-github     = "https://github.com/michaelchessall/SS14-Persistence"
+bug_report = "https://github.com/ss14-art/mildew/issues"
+discord    = "https://discord.gg/E2qapW2373"
+github     = "https://github.com/ss14-art/mildew"
 
 [server]
 id = "Persistence"

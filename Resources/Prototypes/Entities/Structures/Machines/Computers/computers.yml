@@ -132,6 +132,7 @@
         enum.WiresUiKey.Key:
           type: WiresBoundUserInterface
   - type: RadarConsole
+    maxRange: 512 # Art-edit
   - type: WorldLoader
     radius: 512
   - type: PointLight

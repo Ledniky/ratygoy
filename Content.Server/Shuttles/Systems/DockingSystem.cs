@@ -27,6 +27,7 @@ namespace Content.Server.Shuttles.Systems
         [Dependency] private readonly SharedJointSystem _jointSystem = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
+		[Dependency] private readonly SharedPhysicsSystem _physics = default!; // Art-edit
 
         private const string DockingJoint = "docking";
 
@@ -109,6 +110,28 @@ namespace Content.Server.Shuttles.Systems
         private void Cleanup(EntityUid dockAUid, DockingComponent dockA)
         {
             _pathfinding.RemovePortal(dockA.PathfindHandle);
+
+            // Art-start
+            if (dockA.DockJoint != null && dockA.DockedWith != null)  
+            {  
+                var velGridA = _xformQuery.GetComponent(dockAUid).GridUid;
+                var velGridB = _xformQuery.GetComponent(dockA.DockedWith.Value).GridUid;
+      
+                if (velGridA != null && velGridB != null &&
+                    _physicsQuery.TryGetComponent(velGridA.Value, out var bodyA) &&  
+                    _physicsQuery.TryGetComponent(velGridB.Value, out var bodyB))  
+                {  
+                    var totalMass = bodyA.Mass + bodyB.Mass;  
+                    var avgLinVel = (bodyA.LinearVelocity * bodyA.Mass + bodyB.LinearVelocity * bodyB.Mass) / totalMass;  
+                    var avgAngVel = (bodyA.AngularVelocity * bodyA.Mass + bodyB.AngularVelocity * bodyB.Mass) / totalMass;  
+      
+                    _physics.SetLinearVelocity(velGridA.Value, avgLinVel, body: bodyA);  
+                    _physics.SetLinearVelocity(velGridB.Value, avgLinVel, body: bodyB);  
+                    _physics.SetAngularVelocity(velGridA.Value, avgAngVel, body: bodyA);  
+                    _physics.SetAngularVelocity(velGridB.Value, avgAngVel, body: bodyB);  
+                }  
+            }  
+            // Art-end
 
             if (dockA.DockJoint != null)
                 _jointSystem.RemoveJoint(dockA.DockJoint);

@@ -24,6 +24,8 @@ namespace Content.Server.Research.Systems
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly RadioSystem _radio = default!;
         [Dependency] private readonly StationSystem _station = default!;
+		[Dependency] private readonly SharedTransformSystem _xformSystem = default!; // Art-edit
+
         public override void Initialize()
         {
             base.Initialize();
@@ -90,10 +92,15 @@ namespace Content.Server.Research.Systems
             var clientStation = _station.GetOwningStation(client);
             foreach (var thing in set)
             {
-                if (_station.GetOwningStation(thing.Owner) == clientStation)
-                {
-                    final.Add(thing);
-                }
+                if (_station.GetOwningStation(thing.Owner) != clientStation)
+                    continue;
+
+                // Art-start
+                if (!thing.Comp.AllowedClients.Contains(client))
+                    continue;
+
+                final.Add(thing);
+				// Art-end
             }
             return final;
         }

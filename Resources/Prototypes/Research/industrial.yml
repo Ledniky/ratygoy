@@ -69,6 +69,7 @@
   cost: 7500
   recipeUnlocks:
   - RCD
+  - RCDAmmo
   - HCD
 
 - type: technology
@@ -167,7 +168,9 @@
   recipeUnlocks:
   - ShuttleConsoleCircuitboard
   - ThrusterMachineCircuitboard
+  - ThrusterWallmountCircuitboard
   - GyroscopeMachineCircuitboard
+  - GyroscopeFloorMachineCircuitboard
   - MiniGravityGeneratorCircuitboard
   - StationAnchorCircuitboard
 
@@ -230,7 +233,7 @@
   cost: 62500
   recipeUnlocks:
   - Engineeringsuit
-  - Atmossuit
+  # - Atmossuit # перенесено в тематическую технологию
   - Miningsuit
   technologyPrerequisites:
   - EVAManufacturing
