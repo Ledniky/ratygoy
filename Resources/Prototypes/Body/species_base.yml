@@ -163,6 +163,9 @@
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost
+  # ADT tweak start
+  - type: Posing
+  # ADT tweak end
 
 - type: entity
   save: true

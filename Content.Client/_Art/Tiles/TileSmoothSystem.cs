@@ -16,7 +16,6 @@ public sealed class TileSmoothSystem : EntitySystem
     private TileSmoothOverlay _overlay = default!;
 
     private readonly Queue<(EntityUid GridUid, Vector2i Pos)> _dirtyTiles = new();
-
     private readonly HashSet<(EntityUid, Vector2i)> _queuedThisFrame = new();
 
     public override void Initialize()
