@@ -6,7 +6,7 @@
   components:
   - type: Storage
     maxItemSize: Normal
-    grid: 
+    grid:
     - 0,0,9,3
     quickInsert: true
     areaInsert: true
