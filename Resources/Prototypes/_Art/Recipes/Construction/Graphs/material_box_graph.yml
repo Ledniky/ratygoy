@@ -1,0 +1,14 @@
+- type: constructionGraph
+  id: MaterialBoxGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: material_box
+      steps:
+      - material: Steel
+        amount: 7
+        doAfter: 1
+
+  - node: material_box
+    entity: MaterialBox

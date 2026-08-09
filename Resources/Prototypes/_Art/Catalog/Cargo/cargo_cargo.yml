@@ -1,0 +1,8 @@
+- type: cargoProduct
+  id: CargoMaterialBox
+  icon:
+    sprite:  /Textures/Structures/Storage/orebox.rsi
+    state: orebox
+  cost: 300
+  category: cargoproduct-category-name-cargo
+  group: market
