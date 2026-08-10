@@ -1,0 +1,29 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitRaymond
+  name: jumpsuit
+  description: Uniform.
+  components:
+  - type: Sprite
+    sprite: _Art\Sponsor\Raymond\uniforma.rsi
+  - type: Clothing
+    sprite: _Art\Sponsor\Raymond\uniforma.rsi
+
+- type: entity
+  parent: [ClothingHeadBase, BaseCommandContraband]
+  id: ClothingHeadHatRaymondCap
+  name: cap
+  description: Сap.
+  components:
+  - type: Sprite
+    sprite: _Art\Sponsor\Raymond\furajka.rsi
+  - type: Clothing
+    sprite: _Art\Sponsor\Raymond\furajka.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
