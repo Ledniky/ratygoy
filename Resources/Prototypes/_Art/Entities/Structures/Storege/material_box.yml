@@ -8,8 +8,8 @@
     noRot: true
     sprite: Textures/_Art/Structures/Storage/material_box.rsi
     layers:
-    - state: orebox
-    - state: orebox-top
+    - state: material_box
+    - state: material_top
       map: [ top ]
       visible: true
   - type: Storage
