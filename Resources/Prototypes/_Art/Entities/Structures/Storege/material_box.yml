@@ -4,6 +4,14 @@
   description: A large storage container for holding construction material.
   parent: OreBox
   components:
+  - type: Sprite
+    noRot: true
+    sprite: Textures/_Art/Structures/Storage/material_box.rsi
+    layers:
+    - state: orebox
+    - state: orebox-top
+      map: [ top ]
+      visible: true
   - type: Storage
     grid:
     - 0,0,19,9
