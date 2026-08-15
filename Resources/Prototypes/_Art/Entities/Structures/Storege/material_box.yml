@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     noRot: true
-    sprite: Textures/_Art/Structures/Storage/material_box.rsi
+    sprite: _Art/Structures/Storage/material_box.rsi
     layers:
     - state: material_box
     - state: material_top
