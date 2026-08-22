@@ -603,6 +603,6 @@
     - type: SolutionContainerManager
       solutions:
         drink:
-          maxVol: 1000
+          maxVol: 2000
     - type: Sprite
       sprite: Objects/Specific/Chemistry/jug_bluespace.rsi

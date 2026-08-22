@@ -13,6 +13,8 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
 using static Robust.Shared.Physics.DynamicTree;
+using Content.Shared.Drunk; // Art-edit
+using Content.Shared.Drugs; // Art-edit
 
 namespace Content.Shared.CrewAssignments.Systems;
 
@@ -49,7 +51,7 @@ public abstract partial class SharedJobNetSystem : EntitySystem
             {
                 if (proto.TargetStatus == StatusEffectType.Drunk)
                 {
-                    if (Name(ent.Owner) == "drunk")
+                    if (HasComp<DrunkStatusEffectComponent>(ent.Owner)) // Art-edit
                     {
                         if (ent.Comp.EndEffectTime != null && (ent.Comp.EndEffectTime.Value - _timing.CurTime).TotalSeconds >= proto.RequiredAmount)
                         {
@@ -59,7 +61,7 @@ public abstract partial class SharedJobNetSystem : EntitySystem
                 }
                 if (proto.TargetStatus == StatusEffectType.Hallucinate)
                 {
-                    if (Name(ent.Owner) == "hallucinations")
+                    if (HasComp<SeeingRainbowsStatusEffectComponent>(ent.Owner)) // Art-edit
                     {
                         if (ent.Comp.EndEffectTime != null && (ent.Comp.EndEffectTime.Value - _timing.CurTime).TotalSeconds >= proto.RequiredAmount)
                         {

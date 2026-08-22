@@ -32,6 +32,6 @@ public sealed partial class PrecursorObjectivePrototype : IPrototype
     public StatusEffectType TargetStatus { get; set; } = StatusEffectType.Hallucinate;
 
     [DataField]
-    public string Name { get; set; } = string.Empty;
+    public LocId Name { get; set; } = "precursor-objective-default-name";
 
 }

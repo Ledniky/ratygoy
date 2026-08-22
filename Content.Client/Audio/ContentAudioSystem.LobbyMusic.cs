@@ -62,6 +62,8 @@ public sealed partial class ContentAudioSystem
         remove => _lobbySoundtrackChanged -= value;
     }
 
+    public string[] GetAvailableLobbyTracks() => _lobbyPlaylist ?? Array.Empty<string>(); // Art-edit
+
     /// <summary>
     /// Initializes subscriptions that are related to lobby music.
     /// </summary>
@@ -69,6 +71,7 @@ public sealed partial class ContentAudioSystem
     {
         Subs.CVar(_configManager, CCVars.LobbyMusicEnabled, LobbyMusicCVarChanged);
         Subs.CVar(_configManager, CCVars.LobbyMusicVolume, LobbyMusicVolumeCVarChanged);
+		Subs.CVar(_configManager, CCVars.LobbyMusicSelectedTrack, SelectedTrackCVarChanged); // Art-edit
 
         _state.OnStateChanged += StateManagerOnStateChanged;
 
@@ -124,20 +127,53 @@ public sealed partial class ContentAudioSystem
         }
     }
 
+    // Art-start
+	private void SelectedTrackCVarChanged(string filename)
+    {
+        if (_state.CurrentState is not LobbyState)
+            return;
+
+        EndLobbyMusic();
+
+        if (!string.IsNullOrEmpty(filename) && _resourceCache.TryGetResource<AudioResource>(filename, out _))
+        {
+            PlaySoundtrack(filename);
+        }
+        else
+        {
+            StartLobbyMusic();
+        }
+    }
+
+    public void SetSelectedLobbySong(string? filename)
+    {
+        _configManager.SetCVar(CCVars.LobbyMusicSelectedTrack, filename ?? string.Empty);
+    }
+    // Art-end
+
     private void OnLobbySongChanged(LobbyPlaylistChangedEvent playlistChangedEvent)
     {
+		// Art-start
         var playlist = playlistChangedEvent.Playlist;
-        //playlist is already playing, no need to restart it
-        if (_lobbySoundtrackInfo != null
-            && _lobbyPlaylist != null
-            && _lobbyPlaylist.SequenceEqual(playlist)
-           )
+        _lobbyPlaylist = playlist;
+
+        var selected = _configManager.GetCVar(CCVars.LobbyMusicSelectedTrack);
+        if (!string.IsNullOrEmpty(selected))
         {
+            if (_lobbySoundtrackInfo?.Filename == selected)
+                return;
+
+            EndLobbyMusic();
+            PlaySoundtrack(selected);
             return;
         }
 
+        if (_lobbySoundtrackInfo != null && playlist.SequenceEqual(playlist))
+            return;
+		// Art-end
+
         EndLobbyMusic();
-        StartLobbyMusic(playlistChangedEvent.Playlist);
+        StartLobbyMusic(playlist);
     }
 
     /// <summary>
@@ -242,15 +278,23 @@ public sealed partial class ContentAudioSystem
 
     private void UpdateLobbyMusic()
     {
-        if (
-            _lobbySoundtrackInfo != null
-            && _timing.CurTime >= _lobbySoundtrackInfo.NextTrackOn
-            && _lobbyPlaylist?.Length > 0
-            )
+        // Art-start
+		if (_lobbySoundtrackInfo == null || _timing.CurTime < _lobbySoundtrackInfo.NextTrackOn)
+            return;
+
+        var selected = _configManager.GetCVar(CCVars.LobbyMusicSelectedTrack);
+        if (!string.IsNullOrEmpty(selected))
+        {
+            PlaySoundtrack(selected);
+            return;
+        }
+
+        if (_lobbyPlaylist?.Length > 0)
         {
             var nextSoundtrackFilename = GetNextSoundtrackFromPlaylist(_lobbySoundtrackInfo.Filename, _lobbyPlaylist);
             PlaySoundtrack(nextSoundtrackFilename);
         }
+        // Art-end
     }
 
     private static string GetNextSoundtrackFromPlaylist(string currentSoundtrackFilename, string[] playlist)

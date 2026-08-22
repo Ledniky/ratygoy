@@ -1,0 +1,1 @@
+lobby-state-song-automatic = Автоматически

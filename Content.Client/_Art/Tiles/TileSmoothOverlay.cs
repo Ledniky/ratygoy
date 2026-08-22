@@ -60,6 +60,11 @@ public sealed class TileSmoothOverlay : Overlay
         _rsiCache.Clear();
     }
 
+    public void InvalidateTile(EntityUid gridUid, Vector2i pos)
+    {
+        _cornerCache.Remove((gridUid, pos));
+    }
+
     public void RecalculateTile(EntityUid gridUid, MapGridComponent grid, Vector2i pos)
     {
         if (!_mapSystem.TryGetTileRef(gridUid, grid, pos, out var tileRef) || tileRef.Tile.IsEmpty)

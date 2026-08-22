@@ -86,10 +86,13 @@ public sealed class TileSmoothSystem : EntitySystem
         foreach (var change in ev.Changes)
         {
             var pos = change.GridIndices;
-
             for (var dx = -1; dx <= 1; dx++)
             for (var dy = -1; dy <= 1; dy++)
-                EnqueueTile(ev.Entity.Owner, pos + new Vector2i(dx, dy));
+            {
+                var neighborPos = pos + new Vector2i(dx, dy);
+                _overlay.InvalidateTile(ev.Entity.Owner, neighborPos);
+                EnqueueTile(ev.Entity.Owner, neighborPos);
+            }
         }
     }
 

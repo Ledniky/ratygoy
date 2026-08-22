@@ -50,6 +50,8 @@ namespace Content.Client.Lobby
             _gameTicker = _entityManager.System<ClientGameTicker>();
             _contentAudioSystem = _entityManager.System<ContentAudioSystem>();
             _contentAudioSystem.LobbySoundtrackChanged += UpdateLobbySoundtrackInfo;
+			PopulateLobbySongSelector(); // Art-edit
+			Lobby.LobbySongSelector.OnItemSelected += OnLobbySongSelected; // Art-edit
 
             chatController.SetMainChat(true);
 
@@ -222,31 +224,7 @@ namespace Content.Client.Lobby
 
         private void UpdateLobbySoundtrackInfo(LobbySoundtrackChangedEvent ev)
         {
-            if (ev.SoundtrackFilename == null)
-            {
-                Lobby!.LobbySong.SetMarkup(Loc.GetString("lobby-state-song-no-song-text"));
-            }
-            else if (
-                ev.SoundtrackFilename != null
-                && _resourceCache.TryGetResource<AudioResource>(ev.SoundtrackFilename, out var lobbySongResource)
-                )
-            {
-                var lobbyStream = lobbySongResource.AudioStream;
-
-                var title = string.IsNullOrEmpty(lobbyStream.Title)
-                    ? Loc.GetString("lobby-state-song-unknown-title")
-                    : lobbyStream.Title;
-
-                var artist = string.IsNullOrEmpty(lobbyStream.Artist)
-                    ? Loc.GetString("lobby-state-song-unknown-artist")
-                    : lobbyStream.Artist;
-
-                var markup = Loc.GetString("lobby-state-song-text",
-                    ("songTitle", title),
-                    ("songArtist", artist));
-
-                Lobby!.LobbySong.SetMarkup(markup);
-            }
+            PopulateLobbySongSelector(); // Art-edit
         }
 
         private void UpdateLobbyBackground()
@@ -278,5 +256,47 @@ namespace Content.Client.Lobby
 
             _consoleHost.ExecuteCommand($"toggleready {newReady}");
         }
+
+		// Art-start
+        private void PopulateLobbySongSelector()
+        {
+            Lobby!.LobbySongSelector.Clear();
+            Lobby.LobbySongSelector.AddItem(Loc.GetString("lobby-state-song-automatic"), 0);
+
+            var tracks = _contentAudioSystem.GetAvailableLobbyTracks();
+            for (var i = 0; i < tracks.Length; i++)
+            {
+                var label = GetTrackDisplayName(tracks[i]);
+                Lobby.LobbySongSelector.AddItem(label, i + 1);
+                Lobby.LobbySongSelector.SetItemMetadata(i + 1, tracks[i]);
+            }
+
+            var selected = _cfg.GetCVar(CCVars.LobbyMusicSelectedTrack);
+            var index = Array.IndexOf(tracks, selected);
+            Lobby.LobbySongSelector.SelectId(index >= 0 ? index + 1 : 0);
+        }
+
+        private void OnLobbySongSelected(OptionButton.ItemSelectedEventArgs args)
+        {
+            Lobby!.LobbySongSelector.SelectId(args.Id);
+            var filename = args.Id == 0 ? null : (string?)Lobby.LobbySongSelector.GetItemMetadata(args.Id);
+            _contentAudioSystem.SetSelectedLobbySong(filename);
+        }
+
+        private string GetTrackDisplayName(string filename)
+        {
+            if (!_resourceCache.TryGetResource<AudioResource>(filename, out var res))
+                return filename;
+
+            var title = string.IsNullOrEmpty(res.AudioStream.Title)
+                ? Loc.GetString("lobby-state-song-unknown-title")
+                : res.AudioStream.Title;
+            var artist = string.IsNullOrEmpty(res.AudioStream.Artist)
+                ? Loc.GetString("lobby-state-song-unknown-artist")
+                : res.AudioStream.Artist;
+
+            return $"{title} — {artist}";
+        }
+		// Art-end
     }
 }

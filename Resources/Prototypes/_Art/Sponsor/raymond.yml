@@ -5,9 +5,9 @@
   description: Uniform.
   components:
   - type: Sprite
-    sprite: _Art\Sponsor\Raymond\uniforma.rsi
+    sprite: _Art/Sponsor/Raymond/uniforma.rsi
   - type: Clothing
-    sprite: _Art\Sponsor\Raymond\uniforma.rsi
+    sprite: _Art/Sponsor/Raymond/uniforma.rsi
 
 - type: entity
   parent: [ClothingHeadBase, BaseCommandContraband]
@@ -16,9 +16,9 @@
   description: Сap.
   components:
   - type: Sprite
-    sprite: _Art\Sponsor\Raymond\furajka.rsi
+    sprite: _Art/Sponsor/Raymond/furajka.rsi
   - type: Clothing
-    sprite: _Art\Sponsor\Raymond\furajka.rsi
+    sprite: _Art/Sponsor/Raymond/furajka.rsi
   - type: Tag
     tags:
     - PetWearable

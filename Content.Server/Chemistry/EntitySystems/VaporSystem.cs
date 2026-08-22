@@ -39,19 +39,29 @@ namespace Content.Server.Chemistry.EntitySystems
 
         private void HandleCollide(Entity<VaporComponent> entity, ref StartCollideEvent args)
         {
-            if (!TryComp(entity.Owner, out SolutionContainerManagerComponent? contents)) return;
+            //Art-start
+			if (!TryComp(entity.Owner, out SolutionContainerManagerComponent? contents)) return;
 
             foreach (var (_, soln) in _solutionContainerSystem.EnumerateSolutions((entity.Owner, contents)))
             {
                 var solution = soln.Comp.Solution;
-                _reactive.DoEntityReaction(args.OtherEntity, solution, ReactionMethod.Touch);
+                if (solution.Volume <= FixedPoint2.Zero)
+                    continue;
+
+                var splitAmount = solution.Volume * entity.Comp.TransferAmountPercentage;
+                if (splitAmount < entity.Comp.MinimumTransferAmount)
+                    splitAmount = FixedPoint2.Min(solution.Volume, entity.Comp.MinimumTransferAmount);
+
+                var splitSolution = _solutionContainerSystem.SplitSolution(soln, splitAmount);
+
+                _reactive.DoEntityReaction(args.OtherEntity, splitSolution, ReactionMethod.Touch);
             }
 
-            // Check for collision with a impassable object (e.g. wall) and stop
             if ((args.OtherFixture.CollisionLayer & (int)CollisionGroup.Impassable) != 0 && args.OtherFixture.Hard)
             {
                 QueueDel(entity);
             }
+            //Art-end
         }
 
         public void Start(Entity<VaporComponent> vapor,

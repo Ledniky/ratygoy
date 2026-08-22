@@ -1,16 +1,16 @@
 - type: precursorObjective
   id: precursorDrunk
-  name: Get Very Drunk
+  name: precursor-objective-drunk-name
   targetStatus: Drunk
   requiredAmount: 15
 
 - type: precursorObjective
   id: precursorHallucinate
-  name: Hallucinate Severely
+  name: precursor-objective-hallucinate-name
   targetStatus: Hallucinate
 
 - type: precursorObjective
   id: precursorJitter
-  name: Become Highly Jittery.
+  name: precursor-objective-jitter-name
   targetStatus: Jitter
   requiredAmount: 0

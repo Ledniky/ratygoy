@@ -1,10 +1,8 @@
-
-
 <div align="center">
 
-# 🐀 ratgoy
+# 🐀 MILDEW
 
-**Форк Space Station 14 с уникальными механиками и контентом**
+**Форк SS14-Persistence с уникальными механиками и контентом**
 
 [![Discord](https://img.shields.io/discord/1280958916691361842?style=for-the-badge&logo=discord&logoColor=white&label=Discord&color=%237289da)](https://discord.gg/f7ZCyH4Qf8)
 [![GitHub License](https://img.shields.io/github/license/odleer/ratgore?style=for-the-badge)](./LEGAL.md)
@@ -15,60 +13,9 @@
 ---
 
 ## 📋 О проекте
-
-**Ratgore** — это форк [Space Station 14](https://github.com/space-wizards/space-station-14), космического симулятора на движке Robust Toolbox. Проект добавляет уникальные механики, контент и улучшения геймплея с фокусом на атмосферу и уникальный игровой опыт.
-
-## 🚀 Быстрый старт
-
-### Требования
-
-- **Git** — [скачать](https://git-scm.com/downloads)
-- **.NET SDK 10.0 или выше** — [скачать](https://dotnet.microsoft.com/download/dotnet/10.0)
-
-### 🍃 Windows
-
-```
-# 1. Клонируйте репозиторий
-git clone https://github.com/ss14-art/ratgoy.git
-cd ratgore
-
-# 2. Загрузите движок
-git submodule update --init --recursive
-
-# 3. Соберите проект
-Scripts\bat\buildAllRelease.bat
-
-# 4. Запустите клиент и сервер
-Scripts\bat\runQuickAll.bat
-```
-
-**Готово!** Подключитесь к **localhost** в клиенте и играйте
-
-### 🐧 Linux / macOS
-
-```
-# 1. Клонируйте репозиторий
-git clone https://github.com/ss14-art/ratgoy.git
-cd ratgore
-
-# 2. Загрузите движок
-git submodule update --init --recursive
-
-# 3. Соберите проект
-chmod +x Scripts/sh/buildAllRelease.sh
-Scripts/sh/buildAllRelease.sh
-
-# 4. Запустите клиент и сервер
-chmod +x Scripts/sh/runQuickAll.sh
-Scripts/sh/runQuickAll.sh
-```
-
-**Готово!** Подключитесь к **localhost** в клиенте и играйте
+**Mildew** — это сервер, где твоя игра не заканчивается после одного раунда. Всё, что ты построил, изучил и накопил, остаётся с тобой навсегда. Ты можешь вступить в уже существующую фракцию, создать свою собственную или уйти в одиночку изучать сектор. Механики здесь переделаны под долгосрочную игру. У каждого персонажа только одна жизнь. Если ты умираешь, и тебя не спасают, твой персонаж удаляется безвозвратно. Сервер запустился чуть больше месяца назад и игроки уже многое успели сделать, но присоединится никогда не поздно. По лору все игроки попали в секторе из-за аномалии, находясь в крио сне. Попасть в него трудно, а выбраться невозможно. Все они пытаются выжить в этом секторе
 
 ## 📜 Лицензия
-
 Код проекта распространяется под лицензией **GNU AGPLv3**. Ассеты имеют различные лицензии (в основном CC-BY-SA 3.0).
 
 Подробную информацию о лицензиях смотрите в файле [LEGAL.md](./LEGAL.md).
-
-

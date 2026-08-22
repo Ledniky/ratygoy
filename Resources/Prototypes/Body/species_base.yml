@@ -163,6 +163,24 @@
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost
+    - NoGib
+  - type: Destructible # Persistence 14: Overwrite blunt gibbing behaviour
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: mouth-taste-metal
+        popupType: LargeCaution
+        targetOnly: true
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 40
+      behaviors:
+      - !type:VomitBehavior
   # ADT tweak start
   - type: Posing
   # ADT tweak end
@@ -222,7 +240,7 @@
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
   - type: Perishable
-    rotAfter: 360
+    rotAfter: 21600
   - type: Butcherable
     butcheringType: Spike
     spawned:

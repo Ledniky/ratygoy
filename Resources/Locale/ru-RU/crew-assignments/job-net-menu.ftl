@@ -101,3 +101,7 @@ job-net-menu-requires-level-5 = Требуется уровень изгоя 5
 job-net-menu-bounty-reward-bonus = (Выполните этот заказ за 500 прекурсора)
 job-net-menu-deliver-to = Доставить на: { $station }
 job-net-menu-teleport-label = Метка телепорта
+
+precursor-objective-drunk-name = Напиться в стельку
+precursor-objective-hallucinate-name = Поймать галюны
+precursor-objective-jitter-name = Стать сильно дёрганым

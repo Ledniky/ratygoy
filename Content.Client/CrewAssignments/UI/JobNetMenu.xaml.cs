@@ -190,7 +190,7 @@ public sealed partial class JobNetMenu : DefaultWindow
             _prototypeManager.Resolve(objective, out var proto);
             if (proto == null) continue;
             PrecursorObjective precursorObjective = new();
-            precursorObjective.ObjectiveLabel.Text = proto.Name;
+            precursorObjective.ObjectiveLabel.Text = Loc.GetString(proto.Name);
             precursorObjective.RewardLabel.Text = Loc.GetString("job-net-menu-precursor-reward", ("reward", proto.Reward));
             precursorObjective.SectorChaosLabel.Text = Loc.GetString("job-net-menu-minor-chaos");
             PrecursorObjectives.AddChild(precursorObjective);
