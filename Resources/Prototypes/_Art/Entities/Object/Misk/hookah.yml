@@ -1,0 +1,86 @@
+- type: entity
+  id: ForkHookah
+  name: hookah
+  description: A hookah. Fill the tank with water and use the pipe to smoke.
+  parent: BaseItem
+  components:
+  - type: Hookah
+    pipeSlotId: pipe_slot
+    solutionName: tank
+    solutionNeeded: Water
+    explosionIntensity: 2.5
+    gasType: WaterVapor
+    reductionFactor: 6
+    puffAmount: 5
+    puffSound:
+      path: /Audio/_Art/Hookah/hookah.ogg
+    damage:
+      types:
+        Airloss: 1
+  - type: SolutionContainerManager
+    solutions:
+      tank:
+        maxVol: 100
+  - type: RefillableSolution
+    solution: tank
+  - type: ExaminableSolution
+    solution: tank
+  - type: DrainableSolution
+    solution: tank
+  - type: ContainerContainer
+    containers:
+      pipe_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      pipe_slot:
+        name: hookah-slot-component-slot-name-pipe
+        startingItem: ForkHookahPipe
+        whitelist:
+          components:
+          - HookahPipe
+  - type: Sprite
+    sprite: _Art/Objects/Misc/hookah.rsi
+    layers:
+    - state: icon
+      map: [ base ]
+    - state: icon-pipe
+      map: [ pipe ]
+      visible: false
+  - type: Appearance
+  - type: ItemMapper
+    mapLayers:
+      icon-pipe:
+        whitelist:
+          components:
+          - HookahPipe
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 40
+        mask:
+        - ItemMask
+  - type: StaticPrice
+    price: 250
+
+- type: entity
+  id: ForkHookahPipe
+  name: hookah pipe
+  description: A pipe, tethered to a hookah.
+  parent: BaseItem
+  components:
+  - type: HookahPipe
+    range: 2
+    delay: 2
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Art/Objects/Misc/hookah-pipe.rsi
+    state: icon
+  - type: StaticPrice
+    price: 10
