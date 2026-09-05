@@ -11,7 +11,6 @@ game-ticker-player-join-game-message = Добро пожаловать на Ко
 game-ticker-get-info-text = Привет и добро пожаловать в [color=white]Space Station 14![/color]
     Текущий раунд: [color=white]#{ $roundId }[/color]
     Текущее количество игроков: [color=white]{ $playerCount }[/color]
-    Текущая карта: [color=white]{ $mapName }[/color]
     Текущий режим игры: [color=white]{ $gmTitle }[/color]
     >[color=yellow]{ $desc }[/color]
 game-ticker-get-info-preround-text = Привет и добро пожаловать в [color=white]Space Station 14![/color]
@@ -20,7 +19,6 @@ game-ticker-get-info-preround-text = Привет и добро пожалова
     [one] готов
     *[other] готовы
 })
-    Текущая карта: [color=white]{ $mapName }[/color]
     Текущий режим игры: [color=white]{ $gmTitle }[/color]
     >[color=yellow]{ $desc }[/color]
 game-ticker-no-map-selected = [color=red]Карта ещё не выбрана![/color]

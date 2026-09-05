@@ -5,7 +5,7 @@
   reagentId: SpaceDrugs
   group: PrecursorBounty
   bountyType: PayPerReagent
-  successXP: -200
+  successXP: -75
   idPrefix: PREC-
   entries:
   - name: bounty-item-liquid-space-mirage
@@ -18,7 +18,7 @@
   reagentId: Desoxyephedrine
   group: PrecursorBounty
   bountyType: PayPerReagent
-  successXP: -200
+  successXP: -75
   idPrefix: PREC-
   entries:
   - name: bounty-item-liquid-desoxyephedrine

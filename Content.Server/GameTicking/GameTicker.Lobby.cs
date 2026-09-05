@@ -51,26 +51,28 @@ namespace Content.Server.GameTicking
             var playerCount = $"{_playerManager.PlayerCount}";
             var readyCount = _playerGameStatuses.Values.Count(x => x == PlayerGameStatus.ReadyToPlay);
 
-            var stationNames = new StringBuilder();
-            var query =
-                EntityQueryEnumerator<StationJobsComponent, StationSpawningComponent, MetaDataComponent>();
+			// Art-start
+            //var stationNames = new StringBuilder();
+            //var query =
+            //    EntityQueryEnumerator<StationJobsComponent, StationSpawningComponent, MetaDataComponent>();
 
-            var foundOne = false;
+            //var foundOne = false;
 
-            while (query.MoveNext(out _, out _, out var meta))
-            {
-                foundOne = true;
-                if (stationNames.Length > 0)
-                    stationNames.Append('\n');
+            //while (query.MoveNext(out _, out _, out var meta))
+            //{
+            //    foundOne = true;
+            //    if (stationNames.Length > 0)
+            //        stationNames.Append('\n');
 
-                stationNames.Append(meta.EntityName);
-            }
+            //    stationNames.Append(meta.EntityName);
+            //}
 
-            if (!foundOne)
-            {
-                stationNames.Append(_gameMapManager.GetSelectedMap()?.MapName ??
-                                    Loc.GetString("game-ticker-no-map-selected"));
-            }
+            //if (!foundOne)
+            //{
+            //    stationNames.Append(_gameMapManager.GetSelectedMap()?.MapName ??
+            //                        Loc.GetString("game-ticker-no-map-selected"));
+            //}
+			// Art-end
 
             var gmTitle = (Decoy == null) ? Loc.GetString(preset.ModeTitle) : Loc.GetString(Decoy.ModeTitle);
             var desc = (Decoy == null) ? Loc.GetString(preset.Description) : Loc.GetString(Decoy.Description);
@@ -81,7 +83,7 @@ namespace Content.Server.GameTicking
                 ("roundId", RoundId),
                 ("playerCount", playerCount),
                 ("readyCount", readyCount),
-                ("mapName", stationNames.ToString()),
+                //("mapName", stationNames.ToString()), // Art-edit
                 ("gmTitle", gmTitle),
                 ("desc", desc));
         }

@@ -1,3 +1,4 @@
+# Это в миграцию, но мне лень её создавать
 - type: entity
   parent: BaseItem
   id: ShuttleStarterKitArt
